@@ -3,7 +3,7 @@
 <br>
 Welcome to MedPulseAI, an innovative health-tech platform designed to revolutionize your well-being journey! Harnessing the power of machine learning, MedPulseAI offers a comprehensive suite of features to empower you with personalized health insights and recommendations.
 
-<img src="./public/7.png" alt="logo" width=1710 height=400 /> 
+<img src="./public/7.png" alt="logo" width=1710 height=800 /> 
 
 <h3>🌟 Features </h3>
 Alternative Medicine Recommendations 🌿
