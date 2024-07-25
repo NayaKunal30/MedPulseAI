@@ -1,4 +1,4 @@
-🩺 MedPulseAI - Your AI-Driven Path to Better Health 🌟
+<h1>🩺 MedPulseAI - Your AI-Driven Path to Better Health 🌟</h1>
 💡 Idea
 Welcome to MedPulseAI, an innovative health-tech platform designed to revolutionize your well-being journey! Harnessing the power of machine learning, MedPulseAI offers a comprehensive suite of features to empower you with personalized health insights and recommendations.
 
