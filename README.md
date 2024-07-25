@@ -43,7 +43,7 @@ Version Control: GitHub
 To get started with MedPulseAI, clone the repository and follow the setup instructions:
 
 ```
-Copy code
+
 git clone https://github.com/your-username/medpulseai.git
 cd medpulseai
 npm install
