@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MedPulseAI</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="shortcut icon" href="../public/logo.png" type="image/x-icon">
+  <style>
+    body {
+      background: url('./public/bgwpd2.png') no-repeat center center fixed;
+      background-size: cover;
+      height: 100%;
+      margin: 0;
+      padding: 0;
+    }
+    .hospital-list {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+    }
+    .hospital-list li {
+      background-color: #2d3748;
+      border-radius: 0.25rem;
+      padding: 0.5rem 1rem;
+      margin-bottom: 0.5rem;
+      color: #e2e8f0;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Header -->
+  <header class="px-4 lg:px-6 h-20 flex items-center shadow-md bg-gradient-to-br from-[#D6E4FF] to-[#BFDBFE] relative">
+    <a href="../index.html">
+      <img src="../public/logo.png" alt="PredictMed Logo" class="h-10 w-10 rounded-full">
+    </a>
+    <a href="../index.html">
+      <h1 class="text-2xl font-bold text-[#5E0094] ml-2 mt-2">MedPulseAI</h1>
+    </a>
+    <nav class="ml-auto flex items-center relative">
+      <!-- Toggle Button for Mobile -->
+      <button id="menu-toggle" class="lg:hidden text-[#1E40AF] hover:text-[#3B82F6] focus:outline-none">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-6 w-6">
+          <path d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+      </button>
+  
+      <!-- Desktop Menu -->
+      <div class="hidden lg:flex gap-4 sm:gap-6 items-center relative">
+        <a class="text-sm font-medium text-[#1E40AF] hover:underline underline-offset-4 hover:text-[#3B82F6] transition-colors" href="../index.html">Home</a>
+        <div class="relative">
+          <button type="button" id="services-button" aria-haspopup="menu" aria-expanded="false" class="text-sm font-medium text-[#1E40AF] hover:underline underline-offset-4 hover:text-[#3B82F6] transition-colors flex items-center gap-2">
+            <span>Services</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4 text-[#1E40AF] transition-transform duration-300">
+              <path d="m6 9 6 6 6-6"></path>
+            </svg>
+          </button>
+          <div id="services-dropdown" class="absolute top-full left-0 mt-2 w-48 bg-[#5E0094] border border-[#e2e8f0] rounded-lg shadow-lg z-50 hidden">
+            <a href="#primary-care" class="block px-4 py-2 text-sm text-[#FDF0FF] hover:bg-[#9C00C9]">Alternative Medicine Recommendations</a>
+            <a href="../therpy.html" class="block px-4 py-2 text-sm text-[#FDF0FF] hover:bg-[#9C00C9]">Age-Based Lifestyle Therapies</a>
+            <a href="#wellness-programs" class="block px-4 py-2 text-sm text-[#FDF0FF] hover:bg-[#9C00C9]">Predict Diabetess</a>
+            <a href="#pharmacy" class="block px-4 py-2 text-sm text-[#FDF0FF] hover:bg-[#9C00C9]">Predict Heart Diseases</a>
+            <a href="#telehealth" class="block px-4 py-2 text-sm text-[#FDF0FF] hover:bg-[#9C00C9]">Find Nearby Hospitals</a>
+            <a href="#rehabilitation" class="block px-4 py-2 text-sm text-[#FDF0FF] hover:bg-[#9C00C9]">Predictive Health Analytics</a>
+          </div>
+        </div>
+        <a class="text-sm font-medium text-[#1E40AF] hover:underline underline-offset-4 hover:text-[#3B82F6] transition-colors" href="../contact.html">Contact</a>
+        <a class="inline-flex h-8 items-center justify-center rounded-full bg-[#5E0094] px-4 text-sm font-medium text-white shadow transition-colors hover:bg-[#9C00C9] focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 " href="../login.html">Login</a>
+      </div>
+  
+      <!-- Mobile Dropdown Menu -->
+      <div id="mobile-menu" class="lg:hidden absolute top-14 right-0 mt-2 w-48 bg-white border border-[#e2e8f0] rounded-lg shadow-lg hidden z-50">
+        <a href="../index.html" class="block px-4 py-2 text-sm text-[#1E40AF] hover:bg-[#BFDBFE]">Home</a>
+        <button type="button" id="mobile-services-button" class="w-full text-left px-4 py-2 text-sm text-[#1E40AF] hover:bg-[#BFDBFE] flex items-center justify-between">
+          Services
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4 text-[#1E40AF] transition-transform duration-300">
+            <path d="m6 9 6 6 6-6"></path>
+          </svg>
+        </button>
+        <div id="mobile-services-dropdown" class="hidden mt-2 bg-[#5E0094] z-50">
+          <a href="#primary-care" class="block px-4 py-2 text-sm text-[#FDF0FF] hover:bg-[#9C00C9]">Alternative Medicine Recommendations</a>
+          <a href="../therpy.html" class="block px-4 py-2 text-sm text-[#FDF0FF] hover:bg-[#9C00C9]">Age-Based Lifestyle Therapies</a>
+          <a href="#wellness-programs" class="block px-4 py-2 text-sm text-[#FDF0FF] hover:bg-[#9C00C9]">Predict Diabetess</a>
+          <a href="#pharmacy" class="block px-4 py-2 text-sm text-[#FDF0FF] hover:bg-[#9C00C9]">Predict Heart Diseases</a>
+          <a href="#telehealth" class="block px-4 py-2 text-sm text-[#FDF0FF] hover:bg-[#9C00C9]">Find Nearby Hospitals</a>
+          <a href="#rehabilitation" class="block px-4 py-2 text-sm text-[#FDF0FF] hover:bg-[#9C00C9]">Predictive Health Analytics</a>
+        </div>
+        <a href="../contact.html" class="block px-4 py-2 text-sm text-[#1E40AF] hover:bg-[#BFDBFE]">Contact</a>
+        <a href="../login.html" class="block px-4 py-2 text-sm text-[#1E40AF] hover:bg-[#BFDBFE]">Login</a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- LOCATION WELCOME PAGE -->
+  <section class="text-gray-400 body-font">
+    <div class="container mx-auto flex px-5 py-24 md:flex-row flex-col items-center">
+      <div class="lg:flex-grow md:w-1/2 lg:pr-24 md:pr-16 flex flex-col md:items-start md:text-left mb-16 md:mb-0 items-center text-center">
+        <h1 class="title-font sm:text-4xl text-3xl mb-4 font-bold text-blue-400">Find Your Nearest
+          <br class="hidden lg:inline-block">Hospital with MedPulseAI!
+        </h1>
+        <p class="mb-8 leading-relaxed text-white">Discovering nearby hospitals is made effortless with our interactive website. Navigate seamlessly through a map interface that pinpoints hospitals in your vicinity, providing detailed information such as services offered, contact details, and directions. Whether you need emergency care or routine medical services, our platform ensures you find the closest healthcare facility quickly and efficiently.</p>
+        <div class="flex justify-center">
+          <a href="#location" class="inline-flex">
+            <button class="text-white bg-gradient-to-r from-green-400 to-blue-500 border-0 py-2 px-6 focus:outline-none hover:from-green-500 hover:to-blue-600 rounded text-lg transform hover:scale-105 transition duration-300 ease-in-out">
+              Locate Now!
+            </button>
+          </a>
+        </div>
+      </div>
+      <div class="lg:max-w-lg lg:w-full md:w-1/2 w-5/6 flex justify-end">
+        <video class="object-cover object-center rounded-full w-full md:h-auto md:w-96" style="filter: blend(screen);" loop autoplay muted>
+          <source src="./public/locationvid.mp4" type="video/mp4">
+        </video>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer map search -->
+  <section id="location" class="text-gray-400 body-font relative mt-8">
+    <div class="container px-5 py-24 mx-auto flex sm:flex-nowrap flex-wrap">
+      <!-- Map Section -->
+      <div class="lg:w-2/3 md:w-1/2 bg-gray-900 rounded-lg overflow-hidden sm:mr-10 p-10 relative">
+        <iframe width="100%" height="100%" title="map" class="absolute inset-0" frameborder="0" marginheight="0" marginwidth="0" scrolling="no" src="https://maps.google.com/maps?width=100%&height=600&hl=en&q=Knowledge%20Park%20II,%20New%20Delhi,%20India+(My%20Business%20Name)&ie=UTF8&t=&z=14&iwloc=B&output=embed" style="filter: contrast(1.2);"></iframe>
+      </div>
+      <!-- Feedback Form Section -->
+      <div class="lg:w-1/3 md:w-1/2 flex flex-col md:ml-auto w-full md:py-8 mt-8 md:mt-0">
+        <h2 class="text-white text-lg mb-1 font-medium title-font">MedPulseAI</h2>
+        <p class="leading-relaxed mb-5">Find Your Nearest Hospital with MedPulseAI</p>
+        <form id="location-form">
+          <div class="relative mb-4">
+            <label for="location-input" class="leading-7 text-sm text-gray-400">Enter Location</label>
+            <input type="text" id="location-input" name="location" class="w-full bg-gray-800 rounded border border-gray-700 focus:border-blue-500 focus:ring-2 focus:ring-blue-900 text-base outline-none text-gray-100 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+          </div>
+          <div class="relative mb-4" id="hospital-list">
+            <label for="message" class="leading-7 text-sm text-gray-400">Hospitals List</label>
+            <textarea id="message" name="message" class="w-full bg-gray-800 rounded border border-gray-700 focus:border-blue-500 focus:ring-2 focus:ring-blue-900 h-32 text-base outline-none text-gray-100 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"></textarea>
+          </div>
+          <button type="submit" class="text-white bg-blue-500 border-0 py-2 px-6 focus:outline-none hover:bg-blue-600 rounded text-lg">Find Hospitals</button>
+          <p class="text-xs text-gray-400 text-opacity-90 mt-3">Discovering nearby hospitals is made effortless with our interactive website.</p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    document.getElementById('location-form').addEventListener('submit', async function(event) {
+      event.preventDefault();
+      const locationInput = document.getElementById('location-input').value.trim();
+
+      if (locationInput === '') {
+        alert('Please enter a location.');
+        return;
+      }
+
+      const url = `https://map-places.p.rapidapi.com/queryautocomplete/json?input=hospital%20near%20${encodeURIComponent(locationInput)}&radius=5000`;
+      const options = {
+        method: 'GET',
+        headers: {
+          'x-rapidapi-key': '53e770316amshcfb58c0f196b41bp134c80jsne57ada1f30df',
+          'x-rapidapi-host': 'map-places.p.rapidapi.com'
+        }
+      };
+
+      try {
+        const response = await fetch(url, options);
+        const data = await response.json();
+
+        if (data.predictions && data.predictions.length > 0) {
+          const hospitals = data.predictions.map(prediction => prediction.description);
+          displayHospitals(hospitals);
+        } else {
+          displayMessage('No hospitals found near this location.');
+        }
+      } catch (error) {
+        console.error('Error fetching data:', error);
+        displayMessage('Error fetching data. Please try again later.');
+      }
+    });
+
+    function displayHospitals(hospitals) {
+      const hospitalList = document.getElementById('hospital-list');
+      hospitalList.innerHTML = '<h2>Nearby Hospitals:</h2>';
+      const ul = document.createElement('ul');
+      ul.className = 'hospital-list';
+
+      hospitals.forEach(hospital => {
+        const li = document.createElement('li');
+        li.textContent = hospital;
+        ul.appendChild(li);
+      });
+
+      hospitalList.appendChild(ul);
+    }
+
+    function displayMessage(message) {
+      const hospitalList = document.getElementById('hospital-list');
+      hospitalList.innerHTML = `<p>${message}</p>`;
+    }
+  </script>
+  <script>
+    document.getElementById('services-button').addEventListener('click', function () {
+      const dropdown = document.getElementById('services-dropdown');
+      dropdown.classList.toggle('hidden');
+    });
+  </script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const menuToggle = document.getElementById('menu-toggle');
+      const mobileMenu = document.getElementById('mobile-menu');
+      const servicesButton = document.getElementById('mobile-services-button');
+      const mobileServicesDropdown = document.getElementById('mobile-services-dropdown');
+  
+      // Toggle mobile menu visibility
+      menuToggle.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+      });
+  
+      // Toggle dropdown menu inside mobile menu
+      servicesButton.addEventListener('click', () => {
+        mobileServicesDropdown.classList.toggle('hidden');
+      });
+  
+      // Close mobile menu if clicking outside of it
+      document.addEventListener('click', (event) => {
+        if (!mobileMenu.contains(event.target) && !menuToggle.contains(event.target)) {
+          mobileMenu.classList.add('hidden');
+        }
+      });
+    });
+  </script>
+</body>
+
+</html>

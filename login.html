@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MedPulseAI LOGIN</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="shortcut icon" href="./public/logo.png" type="image/x-icon">
+</head>
+<body>
+  <!-- MAIN LANDING PAGE  -->
+<div class="flex flex-col min-h-[100dvh] bg-[#f0f9ff] animate-gradient-x" >
+  <header class="px-4 lg:px-6 h-20 flex items-center shadow-md bg-gradient-to-br from-[#D6E4FF] to-[#BFDBFE] relative">
+    <a href="index.html">
+      <img src="./public/logo.png" alt="PredictMed Logo" class="h-10 w-10 rounded-full">
+    </a>
+    <a href="index.html">
+      <h1 class="text-2xl font-bold text-[#5E0094] ml-2 mt-2">MedPulseAI</h1>
+    </a>
+    <nav class="ml-auto flex items-center relative">
+      <!-- Toggle Button for Mobile -->
+      <button id="menu-toggle" class="lg:hidden text-[#1E40AF] hover:text-[#3B82F6] focus:outline-none">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-6 w-6">
+          <path d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+      </button>
+  
+      <!-- Desktop Menu -->
+      <div class="hidden lg:flex gap-4 sm:gap-6 items-center relative">
+        <a class="text-sm font-medium text-[#1E40AF] hover:underline underline-offset-4 hover:text-[#3B82F6] transition-colors" href="#">Home</a>
+        <div class="relative">
+          <button type="button" id="services-button" aria-haspopup="menu" aria-expanded="false" class="text-sm font-medium text-[#1E40AF] hover:underline underline-offset-4 hover:text-[#3B82F6] transition-colors flex items-center gap-2">
+            <span>Services</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4 text-[#1E40AF] transition-transform duration-300">
+              <path d="m6 9 6 6 6-6"></path>
+            </svg>
+          </button>
+          <div id="services-dropdown" class="absolute top-full left-0 mt-2 w-48 bg-[#5E0094] border border-[#e2e8f0] rounded-lg shadow-lg z-50 hidden">
+            <a href="#primary-care" class="block px-4 py-2 text-sm text-[#FDF0FF] hover:bg-[#9C00C9]">Alternative Medicine Recommendations</a>
+                        <a href="therpy.html" class="block px-4 py-2 text-sm text-[#FDF0FF] hover:bg-[#9C00C9]">Age-Based Lifestyle Therapies</a>
+                        <a href="#wellness-programs" class="block px-4 py-2 text-sm text-[#FDF0FF] hover:bg-[#9C00C9]">Predict Diabetess</a>
+                        <a href="#pharmacy" class="block px-4 py-2 text-sm text-[#FDF0FF] hover:bg-[#9C00C9]">Predict Heart Diseases</a>
+                        <a href="./Location Detector/index.html" class="block px-4 py-2 text-sm text-[#FDF0FF] hover:bg-[#9C00C9]">Find Nearby Hospitals</a>
+                        <a href="#rehabilitation" class="block px-4 py-2 text-sm text-[#FDF0FF] hover:bg-[#9C00C9]">Predictive Health Analytics</a>
+          </div>
+        </div>
+        <a class="text-sm font-medium text-[#1E40AF] hover:underline underline-offset-4 hover:text-[#3B82F6] transition-colors" href="contact.html">Contact</a>
+        <a class="inline-flex h-8 items-center justify-center rounded-full bg-[#5E0094] px-4 text-sm font-medium text-white shadow transition-colors hover:bg-[#9C00C9] focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 " href="login.html">Login</a>
+      </div>
+  
+      <!-- Mobile Dropdown Menu -->
+      <div id="mobile-menu" class="lg:hidden absolute top-14 right-0 mt-2 w-48 bg-white border border-[#e2e8f0] rounded-lg shadow-lg hidden z-50">
+        <a href="index.html" class="block px-4 py-2 text-sm text-[#1E40AF] hover:bg-[#BFDBFE]">Home</a>
+        <button type="button" id="mobile-services-button" class="w-full text-left px-4 py-2 text-sm text-[#1E40AF] hover:bg-[#BFDBFE] flex items-center justify-between">
+          Services
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4 text-[#1E40AF] transition-transform duration-300">
+            <path d="m6 9 6 6 6-6"></path>
+          </svg>
+        </button>
+        <div id="mobile-services-dropdown" class="hidden mt-2 bg-[#5E0094] z-50">
+          <a href="#primary-care" class="block px-4 py-2 text-sm text-[#FDF0FF] hover:bg-[#9C00C9]">Alternative Medicine Recommendations</a>
+                        <a href="therpy.html" class="block px-4 py-2 text-sm text-[#FDF0FF] hover:bg-[#9C00C9]">Age-Based Lifestyle Therapies</a>
+                        <a href="#wellness-programs" class="block px-4 py-2 text-sm text-[#FDF0FF] hover:bg-[#9C00C9]">Predict Diabetess</a>
+                        <a href="#pharmacy" class="block px-4 py-2 text-sm text-[#FDF0FF] hover:bg-[#9C00C9]">Predict Heart Diseases</a>
+                        <a href="./Location Detector/index.html" class="block px-4 py-2 text-sm text-[#FDF0FF] hover:bg-[#9C00C9]">Find Nearby Hospitals</a>
+                        <a href="#rehabilitation" class="block px-4 py-2 text-sm text-[#FDF0FF] hover:bg-[#9C00C9]">Predictive Health Analytics</a>
+        </div>
+        <a href="contact.html" class="block px-4 py-2 text-sm text-[#1E40AF] hover:bg-[#BFDBFE]">Contact</a>
+        <a href="login.html" class="block px-4 py-2 text-sm text-[#1E40AF] hover:bg-[#BFDBFE]">Login</a>
+      </div>
+    </nav>
+  </header>
+  
+  <div class="flex min-h-screen flex-col items-center justify-center px-4 py-12 sm:px-6 lg:px-8">
+    <div class="mx-auto w-full max-w-4xl space-y-6">
+        <div class="flex flex-col items-center justify-center space-y-2 text-center">
+            <h1 class="text-3xl font-bold tracking-tight text-[#5E0094]">Welcome to MedPulseAI</h1>
+            <p class="text-muted-foreground">Please sign in or create an account to continue.</p>
+        </div>
+        <div class="grid grid-cols-1 gap-6 lg:grid-cols-2">
+            <div class="rounded-lg border border-[#0077b6] bg-white p-6 shadow-sm">
+                <h2 class="mb-4 text-xl font-bold">Sign In</h2>
+                <form class="space-y-4">
+                    <div>
+                        <label class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70" for="email">Email</label>
+                        <input class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50" id="email" placeholder="m@example.com" required type="email" />
+                    </div>
+                    <div>
+                        <label class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70" for="password">Password</label>
+                        <input class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50" id="password" required type="password" />
+                    </div>
+                    <button class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-10 px-4 py-2 w-full bg-[#5E0094] text-white hover:bg-[#005a8f]" type="submit">Sign In</button>
+                    <div class="text-center">
+                        <a class="text-sm font-medium text-[#0077b6] hover:underline" href="#">Forgot your password?</a>
+                    </div>
+                </form>
+            </div>
+            <div class="rounded-lg border border-[#0077b6] bg-white p-6 shadow-sm">
+                <h2 class="mb-4 text-xl font-bold">Sign Up</h2>
+                <form class="space-y-4">
+                    <div>
+                        <label class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70" for="name">Name</label>
+                        <input class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50" id="name" placeholder="John Doe" required type="text" />
+                    </div>
+                    <div>
+                        <label class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70" for="email">Email</label>
+                        <input class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50" id="email" placeholder="m@example.com" required type="email" />
+                    </div>
+                    <div>
+                        <label class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70" for="password">Password</label>
+                        <input class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50" id="password" required type="password" />
+                    </div>
+                    <button class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-10 px-4 py-2 w-full bg-[#5E0094] text-white hover:bg-[#005a8f]" type="submit">Sign Up</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- FOOTER  -->
+      <!-- About Section -->
+      <section id="about" class="p-8 mt-0">
+        <div class="flex flex-col md:flex-row mt-8">
+          <div class="md:w-1/4">
+            <img class="rounded-lg image-animation" src="./public/pic1.png" alt="Service Image" />
+          </div>
+          <div class="md:w-3/4 md:pl-8">
+            <h2 class="text-3xl font-bold mb-4">About MedPulseAI</h2>
+            <div class="border-b border-gray-400 mb-4"></div>
+            <div class="flex flex-col md:flex-row">
+              <div class="md:w-1/3 mb-4 md:mb-0">
+                <div class="bg-[#5E0094] text-white rounded-full px-4 py-1 inline-block mb-2">What's MedPulseAI</div>
+                <p>MedPulseAI is an innovative health-tech platform harnessing the power of machine learning to empower individuals to take control of their well-being. It offers a comprehensive suite of features </p>
+              </div>
+              <div class="md:w-1/3 mb-4 md:mb-0">
+                <div class="bg-[#5E0094] text-white rounded-full px-7 py-1 inline-block mb-2">Our Goals</div>
+                <ul class="list-disc list-inside px-5">
+                  <li>Alternative Medicine Recommendations</li>
+                  <li>Age-Based Lifestyle Therapies</li>
+                  <li>Emergency Hospital Locator</li>
+                  <li>Predictive Health Analytics</li>
+                  <li>Predict Diseases With Accuracy</li>
+                </ul>
+              </div>
+              <div class="md:w-1/3">
+                <div class="bg-[#5E0094] text-white rounded-full px-4 py-1 inline-block mb-2">About Us</div>
+                <p>The platform provides users with alternative medicine recommendations, lifestyle therapy suggestions tailored to their age, predictive analytics for diabetes and heart disease, and real-time location-based services to find nearby hospitals in emergencies. </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    
+      <!-- Contact Section -->
+      <section id="contact" class="p-8">
+        <div class="mt-8">
+          <h2 class="text-3xl font-bold mb-4">Contact Us</h2>
+          <div class="border-b border-gray-400 mb-4"></div>
+          <div class="flex flex-col md:flex-row">
+            <div class="md:w-1/2 mb-4 md:mb-0">
+              <p class="font-bold text-purple-600">Email Support:</p>
+              <p>MedPulseAIsupport@gmail.com</p>
+            </div>
+            <div class="md:w-1/2">
+              <p class="font-bold text-purple-600">Phone:</p>
+              <p>+1-123-456-7890</p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <script>
+        document.getElementById('services-button').addEventListener('click', function () {
+          const dropdown = document.getElementById('services-dropdown');
+          dropdown.classList.toggle('hidden');
+        });
+      </script>
+      <script>
+        document.addEventListener('DOMContentLoaded', () => {
+          const menuToggle = document.getElementById('menu-toggle');
+          const mobileMenu = document.getElementById('mobile-menu');
+          const servicesButton = document.getElementById('mobile-services-button');
+          const mobileServicesDropdown = document.getElementById('mobile-services-dropdown');
+      
+          // Toggle mobile menu visibility
+          menuToggle.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+          });
+      
+          // Toggle dropdown menu inside mobile menu
+          servicesButton.addEventListener('click', () => {
+            mobileServicesDropdown.classList.toggle('hidden');
+          });
+      
+          // Close mobile menu if clicking outside of it
+          document.addEventListener('click', (event) => {
+            if (!mobileMenu.contains(event.target) && !menuToggle.contains(event.target)) {
+              mobileMenu.classList.add('hidden');
+            }
+          });
+        });
+      </script>
+</body>
+</html>

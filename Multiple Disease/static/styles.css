@@ -1,0 +1,217 @@
+body {
+  background: url('./public/bgwp2.png') no-repeat center center fixed;
+  background-size: cover;
+  height: 100%; 
+  margin: 0; 
+  padding: 0; 
+}
+/* Animation */
+@keyframes fadeInUp {
+from {
+    opacity: 0;
+    transform: translateY(20px);
+}
+to {
+    opacity: 1;
+    transform: translateY(0);
+}
+}
+
+.navbar {
+/* Flexbox styles */
+display: flex;
+justify-content: center;
+align-items: center;
+text-align: center; 
+height: 150px;
+background-color: #3e5d60; /* Adjust as needed */
+}
+
+.navbar-brand {
+font-size: 4cap;
+font-family: 'Times New Roman', serif; /* Larger font size for brand */
+color: #fff;
+ /* White text color */
+}
+
+.navbar-brand:hover {
+color: #ccc; /* Lighter text color on hover */
+}
+.navbar-text {
+text-align: center; /* Center-align the paragraph */
+width: 100%;
+}
+.gradient-button {
+background: linear-gradient(to right, #459dc0, #1963b7);
+border: none;
+border-radius: 16px;
+color: white;
+padding: 15px 30px;
+font-size: 16px;
+cursor: pointer;
+transition: background 0.3s ease;
+padding: 15px 80px;
+}
+
+.gradient-button:hover {
+background: linear-gradient(to right, #1963b7, #459dc0);
+}
+
+.custom-font {
+font-family: "Gill Sans", sans-serif;
+font-weight: 700;
+border-bottom: 2px solid #333; /* Add a line below the heading */
+padding-bottom: 10px; /* Add some space between the text and the line */
+margin-bottom: 20px;
+margin-top:50px;/* Use the Google Font */
+}
+.custom-image {
+max-width: 100%; /* Ensure the image doesn't exceed its original size */
+height: auto; /* Maintain aspect ratio */
+width: 200px; /* Set the desired width */
+/* Optionally, add more CSS properties for further customization */
+}
+.prediction-box {
+border: 1px solid #ddd;
+background-color: #fff;
+border-radius: 5px;
+box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);
+padding: 20px;
+margin-bottom: 20px;
+}
+.prediction-box h2 {
+font-size: 1.8rem;
+margin-bottom: 20px;
+color: #333;
+}
+.prediction-box form {
+margin-top: 50px;
+margin-bottom: 50px;
+}
+.sidebar {
+position: fixed;
+top: 0;
+bottom: 0;
+left: 0;
+z-index: 100;
+padding: 48px 0 0;
+box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1);
+}
+.sidebar-sticky {
+position: -webkit-sticky;
+position: sticky;
+top: 0;
+height: calc(100vh - 48px);
+padding-top: .5rem;
+overflow-x: hidden;
+overflow-y: auto;
+}
+.collapsed-sidebar {
+margin-left: 0;
+width: 0;
+transition: width 0.3s;
+}
+.expanded-sidebar {
+width: 250px;
+transition: width 0.3s;
+}
+main {
+transition: margin-left 0.3s;
+margin-left: 250px; /* Width of the sidebar */
+}
+.collapsed-main {
+margin-left: 0;
+}
+.toggle-button {
+position: fixed;
+top: 10px;
+left: 10px;
+z-index: 101;
+}
+.text-danger {
+color: #2ecc71; /* Green color for success */
+font-weight: bold; /* Make the text bold */
+font-size: 1.2em; /* Increase font size */
+padding: 8px; /* Add padding around the text */
+border: 2px solid #2ecc71; /* Add a green border */
+border-radius: 5px; /* Round the corners */
+display: inline-block; /* Ensure inline display */
+}
+
+.text-success {
+color: #e74c3c; /* Red color for danger/error */
+font-weight: bold; /* Make the text bold */
+font-size: 1.2em; /* Increase font size */
+padding: 8px; /* Add padding around the text */
+border: 2px solid #e74c3c; /* Add a red border */
+border-radius: 5px; /* Round the corners */
+display: inline-block; /* Ensure inline display */
+}
+#animationContainer {
+width: 100%;
+height: 400px;
+margin-right:45px;
+margin-top: 35px; /* Adjust margin-right as needed */
+}
+@media (max-width: 768px) {
+#animationContainer {
+  margin-right: 0;
+}
+}
+.scroll-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Adjust as needed */
+  overflow: auto;
+}
+.diabetes-green {
+  color: green;
+}
+
+.diabetes-red {
+  color: red;
+}
+/* General styles for the result container */
+#diabetesResult, #heartDiseaseResult {
+  padding: 20px;
+  margin: 20px 0;
+  border-radius: 10px;
+  font-size: 18px;
+  font-weight: bold;
+  transition: all 0.3s ease-in-out;
+}
+
+/* Styles for positive results (not diabetic) */
+.result-positive {
+  background: linear-gradient(135deg, #a8e063, #56ab2f);
+  color: white;
+}
+
+/* Styles for negative results (diabetic) */
+.result-negative {
+  background: linear-gradient(135deg, #ff6f61, #de425b);
+  color: white;
+}
+
+/* Add a subtle animation */
+@keyframes fadeIn {
+  0% { opacity: 0; transform: translateY(-10px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+.result-positive, .result-negative {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+/* Adding more effects */
+.result-positive::before, .result-negative::before {
+  content: '✔'; /* or any other symbol/icon */
+  font-size: 24px;
+  margin-right: 10px;
+}
+
+.result-negative::before {
+  content: '✘'; /* or any other symbol/icon */
+}
+

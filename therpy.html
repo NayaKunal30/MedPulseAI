@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nutrition and Exercise Recommendations</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="shortcut icon" href="./public/logo.png" type="image/x-icon">
+</head>
+<body class="flex flex-col min-h-screen" style="background-image: url('./public/bg2.png');">
+    <header class="px-4 lg:px-6 h-20 flex items-center shadow-md bg-gradient-to-br from-[#D6E4FF] to-[#BFDBFE] relative">
+        <a href="#home" class="flex items-center">
+            <img src="./public/logo.png" alt="PredictMed Logo" class="h-10 w-10 rounded-full">
+            <h1 class="text-2xl font-bold text-[#5E0094] ml-2">MedPulseAI</h1>
+        </a>
+        <nav class="ml-auto flex items-center relative">
+            <!-- Toggle Button for Mobile -->
+            <button id="menu-toggle" class="lg:hidden text-[#1E40AF] hover:text-[#3B82F6] focus:outline-none">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-6 w-6">
+                    <path d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+
+            <!-- Desktop Menu -->
+            <div class="hidden lg:flex gap-4 sm:gap-6 items-center relative">
+                <a class="text-sm font-medium text-[#1E40AF] hover:underline underline-offset-4 hover:text-[#3B82F6] transition-colors" href="index.html">Home</a>
+                <div class="relative">
+                    <button type="button" id="services-button" aria-haspopup="menu" aria-expanded="false" class="text-sm font-medium text-[#1E40AF] hover:underline underline-offset-4 hover:text-[#3B82F6] transition-colors flex items-center gap-2">
+                        <span>Services</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4 text-[#1E40AF] transition-transform duration-300">
+                            <path d="m6 9 6 6 6-6"></path>
+                        </svg>
+                    </button>
+                    <div id="services-dropdown" class="absolute top-full left-0 mt-2 w-48 bg-[#5E0094] border border-[#e2e8f0] rounded-lg shadow-lg z-50 hidden">
+                        <a href="#primary-care" class="block px-4 py-2 text-sm text-[#FDF0FF] hover:bg-[#9C00C9]">Primary Care</a>
+                        <a href="#specialty-care" class="block px-4 py-2 text-sm text-[#FDF0FF] hover:bg-[#9C00C9]">Specialty Care</a>
+                        <a href="#wellness-programs" class="block px-4 py-2 text-sm text-[#FDF0FF] hover:bg-[#9C00C9]">Wellness Programs</a>
+                        <a href="#pharmacy" class="block px-4 py-2 text-sm text-[#FDF0FF] hover:bg-[#9C00C9]">Pharmacy</a>
+                        <a href="./Location Detector/index.html" class="block px-4 py-2 text-sm text-[#FDF0FF] hover:bg-[#9C00C9]">Telehealth</a>
+                        <a href="#rehabilitation" class="block px-4 py-2 text-sm text-[#FDF0FF] hover:bg-[#9C00C9]">Rehabilitation</a>
+                    </div>
+                </div>
+                <a class="text-sm font-medium text-[#1E40AF] hover:underline underline-offset-4 hover:text-[#3B82F6] transition-colors" href="contact.html">Contact</a>
+                <a class="inline-flex h-8 items-center justify-center rounded-full bg-[#5E0094] px-4 text-sm font-medium text-white shadow transition-colors hover:bg-[#9C00C9] focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50" href="login.html">Login</a>
+            </div>
+
+            <!-- Mobile Dropdown Menu -->
+            <div id="mobile-menu" class="lg:hidden absolute top-14 right-0 mt-2 w-48 bg-white border border-[#e2e8f0] rounded-lg shadow-lg hidden z-50">
+                <a href="index.html" class="block px-4 py-2 text-sm text-[#1E40AF] hover:bg-[#BFDBFE]">Home</a>
+                <button type="button" id="mobile-services-button" class="w-full text-left px-4 py-2 text-sm text-[#1E40AF] hover:bg-[#BFDBFE] flex items-center justify-between">
+                    Services
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4 text-[#1E40AF] transition-transform duration-300">
+                        <path d="m6 9 6 6 6-6"></path>
+                    </svg>
+                </button>
+                <div id="mobile-services-dropdown" class="hidden mt-2 bg-[#5E0094] z-50">
+                    <a href="#primary-care" class="block px-4 py-2 text-sm text-[#FDF0FF] hover:bg-[#9C00C9]">Primary Care</a>
+                    <a href="#specialty-care" class="block px-4 py-2 text-sm text-[#FDF0FF] hover:bg-[#9C00C9]">Specialty Care</a>
+                    <a href="#wellness-programs" class="block px-4 py-2 text-sm text-[#FDF0FF] hover:bg-[#9C00C9]">Wellness Programs</a>
+                    <a href="#pharmacy" class="block px-4 py-2 text-sm text-[#FDF0FF] hover:bg-[#9C00C9]">Pharmacy</a>
+                    <a href="./Location Detector/index.html" class="block px-4 py-2 text-sm text-[#FDF0FF] hover:bg-[#9C00C9]">Telehealth</a>
+                    <a href="#rehabilitation" class="block px-4 py-2 text-sm text-[#FDF0FF] hover:bg-[#9C00C9]">Rehabilitation</a>
+                </div>
+                <a href="contact.html" class="block px-4 py-2 text-sm text-[#1E40AF] hover:bg-[#BFDBFE]">Contact</a>
+                <a href="login.html" class="block px-4 py-2 text-sm text-[#1E40AF] hover:bg-[#BFDBFE]">Login</a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="flex-grow flex items-center justify-center p-4">
+      <div class="w-full max-w-4xl bg-[#C1EAFE] p-6 rounded-lg shadow-lg flex flex-col md:flex-row">
+          <img src="./public/pic3.png" alt="Health Image" class="w-full md:w-1/2 h-auto rounded-lg shadow-lg mb-4 md:mb-0">
+          <div class="w-full md:w-1/2 md:pl-6">
+              <h1 class="text-2xl font-bold mb-4 text-[#5E0094]">Nutrition and Exercise Recommendations</h1>
+              <form id="inputForm" class="space-y-4">
+                  <div>
+                      <label for="age" class="block text-sm font-medium text-gray-700">Age:</label>
+                      <input type="number" id="age" name="age" required min="1" max="120" class="w-full p-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-[#00ACC1]">
+                  </div>
+                  <div>
+                      <label for="gender" class="block text-sm font-medium text-gray-700">Gender:</label>
+                      <select id="gender" name="gender" required class="w-full p-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-[#00ACC1]">
+                          <option value="male">Male</option>
+                          <option value="female">Female</option>
+                      </select>
+                  </div>
+                  <div>
+                      <label for="language" class="block text-sm font-medium text-gray-700">Language:</label>
+                      <select id="language" name="language" class="w-full p-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-[#00ACC1]">
+                          <option value="en">English</option>
+                          <option value="hi">Hindi</option>
+                          <option value="mr">Marathi</option>
+                          <option value="ta">Tamil</option>
+                          <option value="bn">Bengali</option>
+                          <option value="gu">Gujarati</option>
+                          <!-- Add more languages here -->
+                      </select>
+                  </div>
+                  <button type="button" onclick="getRecommendations()" class="w-full py-2 px-4 bg-[#5E0094] text-white font-bold rounded-md shadow-sm hover:bg-[#0056b3] transition-colors duration-300">Get Recommendations</button>
+              </form>
+              <div id="result" class="result mt-4 text-center"></div>
+          </div>
+      </div>
+  </main>
+<!-- FOOTER  -->
+      <!-- About Section -->
+      <section id="about" class="p-8 mt-0">
+        <div class="flex flex-col md:flex-row mt-8">
+          <div class="md:w-1/4">
+            <img class="rounded-lg image-animation" src="./public/pic1.png" alt="Service Image" />
+          </div>
+          <div class="md:w-3/4 md:pl-8">
+            <h2 class="text-3xl font-bold mb-4">About MedPulseAI</h2>
+            <div class="border-b border-gray-400 mb-4"></div>
+            <div class="flex flex-col md:flex-row">
+              <div class="md:w-1/3 mb-4 md:mb-0">
+                <div class="bg-[#5E0094] text-white rounded-full px-4 py-1 inline-block mb-2">What's MedPulseAI</div>
+                <p>MedPulseAI is an innovative health-tech platform harnessing the power of machine learning to empower individuals to take control of their well-being. It offers a comprehensive suite of features </p>
+              </div>
+              <div class="md:w-1/3 mb-4 md:mb-0">
+                <div class="bg-[#5E0094] text-white rounded-full px-7 py-1 inline-block mb-2">Our Goals</div>
+                <ul class="list-disc list-inside px-5">
+                  <li>Alternative Medicine Recommendations</li>
+                  <li>Age-Based Lifestyle Therapies</li>
+                  <li>Emergency Hospital Locator</li>
+                  <li>Predictive Health Analytics</li>
+                  <li>Predict Diseases With Accuracy</li>
+                </ul>
+              </div>
+              <div class="md:w-1/3">
+                <div class="bg-[#5E0094] text-white rounded-full px-4 py-1 inline-block mb-2">About Us</div>
+                <p>The platform provides users with alternative medicine recommendations, lifestyle therapy suggestions tailored to their age, predictive analytics for diabetes and heart disease, and real-time location-based services to find nearby hospitals in emergencies. </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    
+      <!-- Contact Section -->
+      <section id="contact" class="p-8">
+        <div class="mt-8">
+          <h2 class="text-3xl font-bold mb-4">Contact Us</h2>
+          <div class="border-b border-gray-400 mb-4"></div>
+          <div class="flex flex-col md:flex-row">
+            <div class="md:w-1/2 mb-4 md:mb-0">
+              <p class="font-bold text-purple-600">Email Support:</p>
+              <p>MedPulseAIsupport@gmail.com</p>
+            </div>
+            <div class="md:w-1/2">
+              <p class="font-bold text-purple-600">Phone:</p>
+              <p>+1-123-456-7890</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    <script>
+        function getRecommendations() {
+            const age = parseInt(document.getElementById('age').value);
+            const gender = document.getElementById('gender').value;
+            const language = document.getElementById('language').value;
+            const resultDiv = document.getElementById('result');
+
+            const texts = {
+                en: {
+                    children: 'For children (1-12 years): Focus on balanced meals with fruits, vegetables, proteins, and whole grains. Ensure adequate calcium and vitamin D for bone growth. Encourage active play and physical activities like running, biking, and swimming.',
+                    teenagers: 'For teenagers (13-18 years): A balanced diet with sufficient proteins, vitamins, and minerals is important. Include iron and calcium. Include a mix of aerobic exercises, strength training, and flexibility exercises.',
+                    adults: 'For adults (19-50 years): Maintain a balanced diet with a focus on fruits, vegetables, lean proteins, and whole grains. Consider fiber and heart-healthy fats. Include cardiovascular exercises, strength training, and flexibility workouts.',
+                    olderAdults: 'For older adults (51+ years): Focus on maintaining a balanced diet with sufficient fiber, calcium, and vitamin D. Ensure hydration. Include low-impact exercises, balance exercises, and strength training.',
+                    female: 'Additional consideration for females: Ensure adequate iron intake, especially during menstruation.',
+                    male: 'Additional consideration for males: Focus on maintaining muscle mass and cardiovascular health.',
+                    error: 'Please provide valid age and gender information.'
+                },
+                hi: {
+                    children: 'बच्चों (1-12 वर्ष) के लिए: फलों, सब्जियों, प्रोटीन और साबुत अनाज के साथ संतुलित आहार पर ध्यान दें। हड्डियों की वृद्धि के लिए पर्याप्त कैल्शियम और विटामिन डी सुनिश्चित करें। सक्रिय खेल और शारीरिक गतिविधियों को प्रोत्साहित करें जैसे दौड़ना, बाइक चलाना और तैरना।',
+                    teenagers: 'किशोरों (13-18 वर्ष) के लिए: पर्याप्त प्रोटीन, विटामिन और खनिजों के साथ संतुलित आहार महत्वपूर्ण है। आयरन और कैल्शियम शामिल करें। एरोबिक व्यायाम, शक्ति प्रशिक्षण और लचीलापन व्यायाम का मिश्रण शामिल करें।',
+                    adults: 'वयस्कों (19-50 वर्ष) के लिए: फलों, सब्जियों, लीन प्रोटीन और साबुत अनाज पर ध्यान केंद्रित करते हुए एक संतुलित आहार बनाए रखें। फाइबर और दिल-स्वस्थ वसा पर विचार करें। कार्डियोवास्कुलर व्यायाम, शक्ति प्रशिक्षण और लचीलापन वर्कआउट शामिल करें।',
+                    olderAdults: 'वरिष्ठ वयस्कों (51+ वर्ष) के लिए: पर्याप्त फाइबर, कैल्शियम और विटामिन डी के साथ एक संतुलित आहार बनाए रखें। हाइड्रेशन सुनिश्चित करें। कम प्रभाव वाले व्यायाम, संतुलन व्यायाम और शक्ति प्रशिक्षण शामिल करें।',
+                    female: 'महिलाओं के लिए अतिरिक्त ध्यान: मासिक धर्म के दौरान विशेष रूप से आयरन की उचित मात्रा सुनिश्चित करें।',
+                    male: 'पुरुषों के लिए अतिरिक्त ध्यान: मांसपेशियों की मास और कार्डियोवैस्कुलर स्वास्थ्य बनाए रखने पर ध्यान केंद्रित करें।',
+                    error: 'कृपया सही उम्र और लिंग की जानकारी प्रदान करें।'
+                },
+                mr: {
+                    children: 'बच्च्यांसाठी (1-12 वर्षे): फळे, भाज्या, प्रथिने आणि पूर्ण धान्य यांसह संतुलित आहारावर लक्ष केंद्रित करा. हाडांच्या वाढीसाठी योग्य प्रमाणात कॅल्शियम आणि विटॅमिन डी सुनिश्चित करा. सक्रिय खेळ आणि शारीरिक क्रियाकलापांना प्रोत्साहन द्या जसे धावणे, सायकल चालवणे आणि पोहणे.',
+                    teenagers: 'किशोरांसाठी (13-18 वर्षे): पुरेशा प्रथिनांसह, विटॅमिन्स आणि खनिजांसह संतुलित आहार महत्त्वाचा आहे. आयर्न आणि कॅल्शियम समाविष्ट करा. एरोबिक व्यायाम, शक्ती प्रशिक्षण आणि लवचिकता व्यायाम यांचा एकत्रित समावेश करा.',
+                    adults: 'वयस्कांसाठी (19-50 वर्षे): फळे, भाज्या, कमी चरबीचे प्रथिने आणि पूर्ण धान्य यांसह संतुलित आहार राखा. फायबर्स आणि हृदयासाठी चांगले फॅट्स विचारात घ्या. कार्डिओवास्कुलर व्यायाम, शक्ती प्रशिक्षण आणि लवचिकता वर्कआउट्स समाविष्ट करा.',
+                    olderAdults: 'वृध्द व्यक्तींसाठी (51+ वर्षे): योग्य फायबर्स, कॅल्शियम आणि विटॅमिन डी असलेला संतुलित आहार राखा. हायड्रेशन सुनिश्चित करा. कमी प्रभाव असलेल्या व्यायाम, संतुलनाचे व्यायाम आणि शक्ती प्रशिक्षण यांचा समावेश करा.',
+                    female: 'महिलांसाठी अतिरिक्त विचार: मासिक पाळी दरम्यान विशेषतः आयर्नची योग्य मात्रा सुनिश्चित करा.',
+                    male: 'पुरुषांसाठी अतिरिक्त विचार: मांसपेशींचा थर आणि हृदयविषयक आरोग्य राखण्यावर लक्ष केंद्रित करा.',
+                    error: 'कृपया योग्य वय आणि लिंगाची माहिती द्या.'
+                },
+                ta: {
+                    children: 'குழந்தைகளுக்கான (1-12 வருடங்கள்): பழங்கள், காய்கறிகள், புரதம் மற்றும் முழு தானியங்களை உள்ளடக்கிய சமரச உணவுகளை உறுதி செய்யுங்கள். எலும்புகள் வளர்வதற்காக পর্যாப்தமாக கீரைகள் மற்றும் வைட்டமின் டி யை உறுதி செய்யுங்கள். ஓட்டம், பைகிங் மற்றும் நீச்சல் போன்ற செயல்பாடுகளை ஊக்குவிக்கவும்.',
+                    teenagers: 'இளவசருக்கான (13-18 வருடங்கள்): போதுமான புரதங்கள், வைட்டமின்கள் மற்றும் தாதுக்களை உள்ளடக்கிய சமரச உணவு முக்கியம். இரும்பு மற்றும் கால் சியுமையும் சேர்க்கவும். ஆரோபிக் பயிற்சிகள், சக்தி பயிற்சிகள் மற்றும் வளைந்துவிடும் பயிற்சிகளை உள்ளடக்கவும்.',
+                    adults: 'பெரியவர்களுக்கான (19-50 வருடங்கள்): பழங்கள், காய்கறிகள், குறைந்த கொழுப்பான புரதங்கள் மற்றும் முழு தானியங்களை அடிப்படையாக்கொண்டு சமரச உணவை பராமரிக்கவும். நாரா மற்றும் இதய ஆரோக்கிய கொழுப்புகள் குறித்து கவலைக்கோரி. கார்டியோவாஸ்குலர் பயிற்சிகள், சக்தி பயிற்சிகள் மற்றும் மடிந்துவிடும் பயிற்சிகளைச் சேர்க்கவும்.',
+                    olderAdults: 'முதியவர்களுக்கான (51+ வருடங்கள்): சரியான நாரா, கால்சியம் மற்றும் வைட்டமின் டி உள்ளடக்கிய சமரச உணவை பராமரிக்கவும். நீர்மம் உறுதி செய்யவும். குறைந்த தாக்கமான பயிற்சிகள், சமநிலையைப் பரிசோதிக்கும் பயிற்சிகள் மற்றும் சக்தி பயிற்சிகளைச் சேர்க்கவும்.',
+                    female: 'பெண்களுக்கு கூடுதல் கவலை: மாதவிலக்கு காலத்தில் குறிப்பாக இரும்பு சேர்க்கை உறுதி செய்யவும்.',
+                    male: 'ஆண்களுக்கு கூடுதல் கவலை: தசை மாஸ் மற்றும் இதய ஆரோக்கியத்தைப் பராமரிக்க கவலைக் கொள்ளுங்கள்.',
+                    error: 'தயவுசெய்து சரியான வயது மற்றும் பாலின தகவல்களை வழங்கவும்.'
+                },
+                bn: {
+                    children: 'শিশুদের (১-১২ বছর): ফল, সবজি, প্রোটিন এবং পুরো শস্য সহ একটি সুষম খাবারের প্রতি মনোযোগ দিন। হাড়ের বৃদ্ধি নিশ্চিত করতে পর্যাপ্ত ক্যালসিয়াম এবং ভিটামিন ডি নিশ্চিত করুন। সক্রিয় খেলা এবং শারীরিক ক্রিয়াকলাপ যেমন দৌড়ানো, বাইক চালানো এবং সাঁতার কাটাতে উৎসাহিত করুন।',
+                    teenagers: 'কিশোরদের (১৩-১৮ বছর): পর্যাপ্ত প্রোটিন, ভিটামিন এবং খনিজ সহ একটি সুষম খাদ্য গুরুত্বপূর্ণ। আয়রন এবং ক্যালসিয়াম অন্তর্ভুক্ত করুন। এরোবিক ব্যায়াম, শক্তি প্রশিক্ষণ এবং নমনীয়তা ব্যায়ামের মিশ্রণ অন্তর্ভুক্ত করুন।',
+                    adults: 'বয়স্কদের (১৯-৫০ বছর): ফল, সবজি, লীন প্রোটিন এবং পুরো শস্যের উপর মনোযোগ দিয়ে একটি সুষম খাদ্য বজায় রাখুন। ফাইবার এবং হৃদরোগের জন্য ভালো চর্বি বিবেচনা করুন। কার্ডিওভাসকুলার ব্যায়াম, শক্তি প্রশিক্ষণ এবং নমনীয়তা ওয়ার্কআউট অন্তর্ভুক্ত করুন।',
+                    olderAdults: 'বৃদ্ধদের (৫১+ বছর): যথেষ্ট ফাইবার, ক্যালসিয়াম এবং ভিটামিন ডি সহ একটি সুষম খাদ্য বজায় রাখুন। জলসেচন নিশ্চিত করুন। কম প্রভাবের ব্যায়াম, ভারসাম্য ব্যায়াম এবং শক্তি প্রশিক্ষণ অন্তর্ভুক্ত করুন।',
+                    female: 'মহিলাদের জন্য অতিরিক্ত বিবেচনা: বিশেষভাবে মাসিকের সময় যথেষ্ট আয়রন গ্রহণ নিশ্চিত করুন।',
+                    male: 'পুরুষদের জন্য অতিরিক্ত বিবেচনা: মাংসপেশী ভর এবং কার্ডিওভাসকুলার স্বাস্থ্য বজায় রাখার উপর মনোযোগ দিন।',
+                    error: 'দয়া করে বৈধ বয়স এবং লিঙ্গের তথ্য প্রদান করুন।'
+                },
+                gu: {
+                    children: 'બાળકો (1-12 વર્ષ) માટે: ફળો, શાકભાજી, પ્રોટીન અને પૂરા અનાજ સાથે સંતુલિત આહાર પર ધ્યાન આપો. હાડકાંની વૃદ્ધિ માટે પૂરતા કૅલ્શિયમ અને વિટામિન ડી સુનિશ્ચિત કરો. સક્રિય રમત અને શારીરિક પ્રવૃત્તિઓને પ્રોત્સાહિત કરો જેમ કે દોડવું, સાયકલ ચલાવવું અને સ્વિમિંગ.',
+                    teenagers: 'કિશોરો (13-18 વર્ષ) માટે: પૂરતા પ્રોટીન, વિટામિન અને ખનિજોથી ભરપૂર સંતુલિત આહાર મહત્વપૂર્ણ છે. આયર્ન અને કૅલ્શિયમ ઉમેરો. એરોબિક એક્સરસાઇઝ, શક્તિ તાલીમ અને સુમેળી એક્સરસાઇઝનો મિશ્રણ ઉમેરો.',
+                    adults: 'વયસ્કો (19-50 વર્ષ) માટે: ફળો, શાકભાજી, લિન પ્રોટીન અને પૂરા અનાજ સાથે સંતુલિત આહાર રાખો. ફાઇબર અને હૃદય આરોગ્ય માટેની ચરબી પર વિચાર કરો. કાર્ડિયોવાસ્ક્યુલર એક્સરસાઇઝ, શક્તિ તાલીમ અને સુમેળી વર્કઆઉટ્સ ઉમેરો.',
+                    olderAdults: 'જિનારા વયસ્કો (51+ વર્ષ) માટે: પૂરતા ફાઇબર, કૅલ્શિયમ અને વિટામિન ડી સાથે સંતુલિત આહાર રાખો. હાઇડ્રેશન સુનિશ્ચિત કરો. નીચા અસરવાળા એક્સરસાઇઝ, સંતુલનના એક્સરસાઇઝ અને શક્તિ તાલીમ ઉમેરો.',
+                    female: 'મહિલાઓ માટે વધારાની સંભાળ: ખાસ કરીને માસિક સમયમાં પૂરતા આયર્નનું લેવું સુનિશ્ચિત કરો.',
+                    male: 'પુરુષો માટે વધારાની સંભાળ: પેશીની પેશી અને હૃદય આરોગ્યને જાળવવા પર ધ્યાન કેન્દ્રિત કરો.',
+                    error: 'કૃપા કરીને માન્ય ઉંમર અને લિંગની માહિતી પ્રદાન કરો.'
+                }
+            };
+
+            let textKey;
+            if (age < 13) {
+                textKey = 'children';
+            } else if (age < 19) {
+                textKey = 'teenagers';
+            } else if (age < 51) {
+                textKey = 'adults';
+            } else {
+                textKey = 'olderAdults';
+            }
+
+            const recommendationText = texts[language][textKey] || texts[language].error;
+            resultDiv.textContent = recommendationText;
+
+            // Speech Synthesis
+            const utterance = new SpeechSynthesisUtterance(recommendationText);
+            utterance.lang = language === 'hi' ? 'hi-IN' :
+                              language === 'mr' ? 'mr-IN' :
+                              language === 'ta' ? 'ta-IN' :
+                              language === 'bn' ? 'bn-IN' :
+                              language === 'gu' ? 'gu-IN' : 'en-US';
+            window.speechSynthesis.speak(utterance);
+        }
+    </script>
+    <script>
+        document.getElementById('services-button').addEventListener('click', function () {
+          const dropdown = document.getElementById('services-dropdown');
+          dropdown.classList.toggle('hidden');
+        });
+      </script>
+      <script>
+        document.addEventListener('DOMContentLoaded', () => {
+          const menuToggle = document.getElementById('menu-toggle');
+          const mobileMenu = document.getElementById('mobile-menu');
+          const servicesButton = document.getElementById('mobile-services-button');
+          const mobileServicesDropdown = document.getElementById('mobile-services-dropdown');
+      
+          // Toggle mobile menu visibility
+          menuToggle.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+          });
+      
+          // Toggle dropdown menu inside mobile menu
+          servicesButton.addEventListener('click', () => {
+            mobileServicesDropdown.classList.toggle('hidden');
+          });
+      
+          // Close mobile menu if clicking outside of it
+          document.addEventListener('click', (event) => {
+            if (!mobileMenu.contains(event.target) && !menuToggle.contains(event.target)) {
+              mobileMenu.classList.add('hidden');
+            }
+          });
+        });
+      </script>
+</body>
+</body>
+</html>

@@ -1,0 +1,6 @@
+numpy
+streamlit
+streamlit-option-menu
+flask
+scikit-learn
+pandas

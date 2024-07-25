@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Healthcare Prediction</title>
+    <!-- Linking Tailwind CSS and custom stylesheet -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="shortcut icon"
+      href="{{ url_for('static', filename='public/logo.png') }}"
+      type="image/x-icon"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='styles.css') }}"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body class="text-gray-900">
+    <!-- Navigation bar -->
+    <nav class="absolute w-full z-10">
+      <div class="max-w-7xl mx-auto px-4">
+        <div class="flex justify-between items-center py-5">
+          <div class="flex items-center space-x-2">
+            <a
+              href="#"
+              class="flex items-center py-5 px-2 text-black hover:text-blue-900"
+            >
+              <img
+                src="{{ url_for('static', filename='public/logo.png') }}"
+                alt="PredictMed Logo"
+                class="h-10 w-10 rounded-full"
+              />
+              <span class="text-2xl font-bold text-black"
+                >MedPulse<span class="text-purple-800">AI</span></span
+              >
+            </a>
+          </div>
+          <div class="hidden md:flex space-x-1">
+            <a
+              href=""
+              class="py-5 px-3 text-black font-semibold hover:text-blue-900"
+              >Home</a
+            >
+            <a
+              href="#diabetes"
+              class="py-5 px-3 text-black font-semibold hover:text-blue-900"
+              >Diabetes Prediction</a
+            >
+            <a
+              href="#heart-disease"
+              class="py-5 px-3 text-black font-semibold hover:text-blue-900"
+              >Heart Disease Prediction</a
+            >
+            <a
+              href=""
+              class="py-5 px-3 text-black font-semibold hover:text-blue-900"
+              >Nearby Hospitals</a
+            >
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Section for the hero image and welcome message -->
+    <section
+      class="min-h-screen flex items-center background-image fade-in"
+      style="background-size: cover; background-position: center"
+    >
+      <!-- Text content on the left -->
+      <div class="w-full max-w-2xl mx-auto px-6 md:px-0 md:ml-10">
+        <div class="slide-in-right text-black">
+          <!-- Heading and subheading -->
+          <h1 class="text-3xl md:text-5xl font-bold mb-4 text-purple-900">
+            Welcome to MedpulseAI
+          </h1>
+          <p class="text-base md:text-lg mb-6">
+            We are delighted to have you here. At PredictMED, we harness the
+            power of cutting-edge technology to provide accurate and reliable
+            disease predictions.
+          </p>
+          <!-- Button to get started, linked to diabetes prediction section -->
+          <a
+            href="#diabetes"
+            class="mt-4 px-6 py-3 bg-gradient-to-r from-blue-500 to-blue-700 text-white font-semibold rounded-lg hover:from-blue-600 hover:to-blue-800"
+          >
+            Predict Now
+          </a>
+        </div>
+      </div>
+      <!-- Lottie animation on the right -->
+      <div
+        id="animationContainer"
+        class="w-full max-w-lg mx-auto md:mr-0 md:w-2/3"
+        style="width: 100%; height: 400px"
+      ></div>
+    </section>
+
+    <!-- Section for diabetes prediction -->
+    <section
+      id="diabetes"
+      class="min-h-screen flex items-center justify-center background-image fade-in"
+      style="background-size: cover; background-position: center"
+    >
+      <div class="text-center text-black w-full max-w-4xl mx-auto px-4">
+        <!-- Heading and description for diabetes prediction -->
+        <h2 class="text-4xl font-bold mb-4">Diabetes Prediction</h2>
+        <p class="text-xl mb-6">
+          Get your diabetes risk score based on your health data.
+        </p>
+        <!-- Form for input fields related to diabetes prediction -->
+        <form
+          id="diabetesForm"
+          class="bg-gray-700 bg-opacity-75 p-8 rounded-lg mt-8 backdrop-blur-md transform shadow-lg"
+        >
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+            <!-- Input fields for diabetes prediction -->
+            <div class="col">
+              <label for="pregnancies" class="block text-white"
+                >Number of Pregnancies</label
+              >
+              <input
+                type="text"
+                class="w-full bg-transparent border border-white text-white rounded py-2 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                id="pregnancies"
+                name="pregnancies"
+                required
+              />
+            </div>
+            <div class="col">
+              <label for="glucose" class="block text-white"
+                >Glucose Level</label
+              >
+              <input
+                type="text"
+                class="w-full bg-transparent border border-white text-white rounded py-2 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                id="glucose"
+                name="glucose"
+                required
+              />
+            </div>
+            <div class="col">
+              <label for="bloodPressure" class="block text-white"
+                >Blood Pressure value</label
+              >
+              <input
+                type="text"
+                class="w-full bg-transparent border border-white text-white rounded py-2 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                id="bloodPressure"
+                name="bloodPressure"
+                required
+              />
+            </div>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+            <div class="col">
+              <label for="skinThickness" class="block text-white"
+                >Skin Thickness value</label
+              >
+              <input
+                type="text"
+                class="w-full bg-transparent border border-white text-white rounded py-2 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                id="skinThickness"
+                name="skinThickness"
+                required
+              />
+            </div>
+            <div class="col">
+              <label for="insulin" class="block text-white"
+                >Insulin Level</label
+              >
+              <input
+                type="text"
+                class="w-full bg-transparent border border-white text-white rounded py-2 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                id="insulin"
+                name="insulin"
+                required
+              />
+            </div>
+            <div class="col">
+              <label for="bmi" class="block text-white">BMI value</label>
+              <input
+                type="text"
+                class="w-full bg-transparent border border-white text-white rounded py-2 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                id="bmi"
+                name="bmi"
+                required
+              />
+            </div>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+            <div class="col">
+              <label for="diabetesPedigreeFunction" class="block text-white"
+                >Diabetes Pedigree Function value</label
+              >
+              <input
+                type="text"
+                class="w-full bg-transparent border border-white text-white rounded py-2 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                id="diabetesPedigreeFunction"
+                name="diabetesPedigreeFunction"
+                required
+              />
+            </div>
+            <div class="col">
+              <label for="age" class="block text-white"
+                >Age of the Person</label
+              >
+              <input
+                type="text"
+                class="w-full bg-transparent border border-white text-white rounded py-2 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                id="age"
+                name="age"
+                required
+              />
+            </div>
+          </div>
+          <!-- Button to trigger diabetes prediction -->
+          <button
+            type="submit"
+            class="mt-4 px-6 py-3 bg-blue-500 text-white rounded-lg hover:bg-blue-700"
+            onclick="makePrediction('diabetes')"
+          >
+            Diabetes Test Result
+          </button>
+        </form>
+        <!-- Container for displaying diabetes prediction result -->
+        <div id="diabetesResult" class="mt-4 text-xl font-bold"></div>
+      </div>
+    </section>
+
+    <!-- Section for heart disease prediction -->
+    <section
+      id="heart-disease"
+      class="min-h-screen flex items-center justify-center background-image fade-in"
+      style="background-size: cover; background-position: center"
+    >
+      <div class="text-center text-black w-full max-w-4xl mx-auto px-4">
+        <!-- Heading and description for heart disease prediction -->
+        <h2 class="text-4xl font-bold mb-18 mt-20">Heart Disease Prediction</h2>
+        <p class="text-xl mb-2">
+          Get your heart disease risk score based on your health data.
+        </p>
+        <!-- Form for input fields related to heart disease prediction -->
+        <form
+          id="heartDiseaseForm"
+          class="bg-gray-700 bg-opacity-75 p-8 rounded-lg mt-18 backdrop-blur-md transform shadow-lg"
+        >
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+            <!-- Input fields for heart disease prediction -->
+            <div class="col">
+              <label for="age" class="block text-white">Age</label>
+              <input
+                type="text"
+                class="w-full bg-transparent border border-white text-white rounded py-2 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                id="age"
+                name="age"
+                required
+              />
+            </div>
+            <div class="col">
+              <label for="sex" class="block text-white"
+                >Sex (1 = male, 0 = female)</label
+              >
+              <input
+                type="text"
+                class="w-full bg-transparent border border-white text-white rounded py-2 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                id="sex"
+                name="sex"
+                required
+              />
+            </div>
+            <div class="col">
+              <label for="cp" class="block text-white"
+                >Chest Pain Type (0-3)</label
+              >
+              <input
+                type="text"
+                class="w-full bg-transparent border border-white text-white rounded py-2 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                id="cp"
+                name="cp"
+                required
+              />
+            </div>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+            <div class="col">
+              <label for="trestbps" class="block text-white"
+                >Resting Blood Pressure</label
+              >
+              <input
+                type="text"
+                class="w-full bg-transparent border border-white text-white rounded py-2 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                id="trestbps"
+                name="trestbps"
+                required
+              />
+            </div>
+            <div class="col">
+              <label for="chol" class="block text-white"
+                >Serum Cholesterol (in mg/dl)</label
+              >
+              <input
+                type="text"
+                class="w-full bg-transparent border border-white text-white rounded py-2 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                id="chol"
+                name="chol"
+                required
+              />
+            </div>
+            <div class="col">
+              <label for="fbs" class="block text-white"
+                >Fasting Blood Sugar &gt; 120 mg/dl (1 = true, 0 = false)</label
+              >
+              <input
+                type="text"
+                class="w-full bg-transparent border border-white text-white rounded py-2 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                id="fbs"
+                name="fbs"
+                required
+              />
+            </div>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+            <div class="col">
+              <label for="restecg" class="block text-white"
+                >Resting Electrocardiographic Results (0-2)</label
+              >
+              <input
+                type="text"
+                class="w-full bg-transparent border border-white text-white rounded py-2 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                id="restecg"
+                name="restecg"
+                required
+              />
+            </div>
+            <div class="col">
+              <label for="thalach" class="block text-white"
+                >Maximum Heart Rate Achieved</label
+              >
+              <input
+                type="text"
+                class="w-full bg-transparent border border-white text-white rounded py-2 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                id="thalach"
+                name="thalach"
+                required
+              />
+            </div>
+            <div class="col">
+              <label for="exang" class="block text-white"
+                >Exercise Induced Angina (1 = yes, 0 = no)</label
+              >
+              <input
+                type="text"
+                class="w-full bg-transparent border border-white text-white rounded py-2 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                id="exang"
+                name="exang"
+                required
+              />
+            </div>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+            <div class="col">
+              <label for="oldpeak" class="block text-white"
+                >ST Depression Induced by Exercise</label
+              >
+              <input
+                type="text"
+                class="w-full bg-transparent border border-white text-white rounded py-2 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                id="oldpeak"
+                name="oldpeak"
+                required
+              />
+            </div>
+            <div class="col">
+              <label for="slope" class="block text-white"
+                >Slope of the Peak Exercise ST Segment (0-2)</label
+              >
+              <input
+                type="text"
+                class="w-full bg-transparent border border-white text-white rounded py-2 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                id="slope"
+                name="slope"
+                required
+              />
+            </div>
+            <div class="col">
+              <label for="ca" class="block text-white"
+                >Number of Major Vessels (0-3) Colored by Fluoroscopy</label
+              >
+              <input
+                type="text"
+                class="w-full bg-transparent border border-white text-white rounded py-2 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                id="ca"
+                name="ca"
+                required
+              />
+            </div>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+            <div class="col">
+              <label for="thal" class="block text-white"
+                >Thalassemia (0-3)</label
+              >
+              <input
+                type="text"
+                class="w-full bg-transparent border border-white text-white rounded py-2 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                id="thal"
+                name="thal"
+                required
+              />
+            </div>
+          </div>
+          <!-- Button to trigger heart disease prediction -->
+          <button
+            type="submit"
+            class="btn btn-primary gradient-button mt-4 px-6 py-3 bg-blue-500 text-white rounded-lg hover:bg-blue-700"
+            onclick="makePrediction('heart-disease')"
+          >
+            Heart Disease Test Result
+          </button>
+        </form>
+        <!-- Container for displaying heart disease prediction result -->
+        <div id="heartDiseaseResult" class="mt-4 text-xl font-bold"></div>
+      </div>
+    </section>
+
+    <!-- Footer section -->
+    <footer class="text-black body-font">
+      <div
+        class="container px-5 py-8 mx-auto flex items-center sm:flex-row flex-col"
+      >
+        <a
+          class="flex title-font font-medium items-center md:justify-start justify-center text-black"
+        >
+          <img
+            src="{{ url_for('static', filename='public/PredictMed Logo.png') }}"
+            alt="PredictMed Logo"
+            class="h-10 w-10 rounded-full"
+          />
+          <span class="ml-3 text-xl">MEDPulseAI</span>
+        </a>
+        <p
+          class="text-sm text-black sm:ml-4 sm:pl-4 sm:border-l-2 sm:border-gray-800 sm:py-2 sm:mt-0 mt-4"
+        >
+          © 2024 MEDPulseAI —
+          <a
+            href="https://twitter.com"
+            class="text-gray-500 ml-1"
+            target="_blank"
+            rel="noopener noreferrer"
+            >@KSQUARE</a
+          >
+        </p>
+        <span
+          class="inline-flex sm:ml-auto sm:mt-0 mt-4 justify-center sm:justify-start"
+        >
+          <a class="text-gray-400">
+            <svg
+              fill="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              class="w-5 h-5"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"
+              ></path>
+            </svg>
+          </a>
+          <a class="ml-3 text-gray-400">
+            <svg
+              fill="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              class="w-5 h-5"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"
+              ></path>
+            </svg>
+          </a>
+          <a class="ml-3 text-gray-400">
+            <svg
+              fill="none"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              class="w-5 h-5"
+              viewBox="0 0 24 24"
+            >
+              <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
+              <path
+                d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37zm1.5-4.87h.01"
+              ></path>
+            </svg>
+          </a>
+          <a class="ml-3 text-gray-400">
+            <svg
+              fill="currentColor"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="0"
+              class="w-5 h-5"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke="none"
+                d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"
+              ></path>
+              <circle cx="4" cy="4" r="2" stroke="none"></circle>
+            </svg>
+          </a>
+        </span>
+      </div>
+    </footer>
+    <!-- jQuery library -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.7.5/lottie.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.7.6/lottie.min.js"></script>
+   <!-- JavaScript function for making predictions -->
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    var animationContainer = document.getElementById("animationContainer");
+    var animation = lottie.loadAnimation({
+        container: animationContainer, 
+        renderer: "svg",
+        loop: true,
+        autoplay: true,
+        path: "{{ url_for('static', filename='images/animationpred.json') }}", 
+    });
+});
+
+document.getElementById('diabetesForm').addEventListener('submit', function (event) {
+    event.preventDefault();
+    const formData = new FormData(this);
+    fetch('/predict_diabetes', {
+        method: 'POST',
+        body: JSON.stringify(Object.fromEntries(formData.entries())),
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+        .then(response => response.json())
+        .then(data => {
+            const userInput = `[${Array.from(formData.values()).join(', ')}]`;
+            const resultMessage = data.message;
+            const resultElement = document.getElementById('diabetesResult');
+
+            if (resultMessage.includes('not diabetic')) {
+                resultElement.className = 'result-positive';
+            } else {
+                resultElement.className = 'result-negative';
+            }
+
+            resultElement.innerHTML = `<p>User input for diabetes prediction: ${userInput}</p><p>${resultMessage}</p>`;
+            resultElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            document.getElementById('diabetesResult').innerHTML = `<p>Error: ${error}</p>`;
+        });
+});
+
+document.getElementById('heartDiseaseForm').addEventListener('submit', function (event) {
+    event.preventDefault();
+    const formData = new FormData(this);
+    fetch('/predict_heart_disease', {
+        method: 'POST',
+        body: JSON.stringify(Object.fromEntries(formData.entries())),
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+        .then(response => response.json())
+        .then(data => {
+            const userInput = `[${Array.from(formData.values()).join(', ')}]`;
+            const resultMessage = data.message;
+            const resultElement = document.getElementById('heartDiseaseResult');
+
+            if (resultMessage.includes('not diabetic')) {
+                resultElement.className = 'result-positive';
+            } else {
+                resultElement.className = 'result-negative';
+            }
+
+            resultElement.innerHTML = `<p>User input for heart disease prediction: ${userInput}</p><p>${resultMessage}</p>`;
+            resultElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            document.getElementById('heartDiseaseResult').innerHTML = `<p>Error: ${error}</p>`;
+        });
+});
+
+  
+</script>
+</body>
+</html>

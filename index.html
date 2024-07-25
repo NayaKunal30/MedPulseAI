@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MedPulseAI</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="shortcut icon" href="./public/logo.png" type="image/x-icon">
+</head>
+<body>
+  <style>
+    #scroll-container {
+      display: flex;
+      overflow: hidden; 
+      white-space: nowrap; 
+    }
+    
+    .animate-scroll {
+      animation: scroll 20s linear infinite;
+      display: inline-block; 
+      padding: 0 20px; 
+    }
+    
+    @keyframes scroll {
+      0% {
+        transform: translateX(100%);
+      }
+      100% {
+        transform: translateX(-100%);
+      }
+    }
+    
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .animate-scroll {
+        animation-duration: 15s; 
+        padding: 0 15px; 
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .animate-scroll {
+        animation-duration: 10s; 
+        padding: 0 10px; 
+      }
+    }
+    @keyframes scaleUpDown {
+      0%, 100% {
+          transform: scale(0.85);
+      }
+      50% {
+          transform: scale(1);
+      }
+  }
+
+  .animate-image {
+      animation: scaleUpDown 5s infinite;
+  }
+  </style>
+    <!-- MAIN LANDING PAGE  -->
+    <div class="flex flex-col min-h-[100dvh] bg-gradient-to-br from-[#D6E4FF] to-[#BFDBFE] animate-gradient-x" >
+      <header class="px-4 lg:px-6 h-20 flex items-center shadow-md bg-gradient-to-br from-[#D6E4FF] to-[#BFDBFE] relative">
+        <a href="index.html">
+          <img src="./public/logo.png" alt="PredictMed Logo" class="h-10 w-10 rounded-full">
+        </a>
+        <a href="index.html">
+          <h1 class="text-2xl font-bold text-[#5E0094] ml-2 mt-2">MedPulseAI</h1>
+        </a>
+        <nav class="ml-auto flex items-center relative">
+          <!-- Toggle Button for Mobile -->
+          <button id="menu-toggle" class="lg:hidden text-[#1E40AF] hover:text-[#3B82F6] focus:outline-none">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-6 w-6">
+              <path d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+          </button>
+      
+          <!-- Desktop Menu -->
+          <div class="hidden lg:flex gap-4 sm:gap-6 items-center relative">
+            <a class="text-sm font-medium text-[#1E40AF] hover:underline underline-offset-4 hover:text-[#3B82F6] transition-colors" href="index.html">Home</a>
+            <div class="relative">
+              <button type="button" id="services-button" aria-haspopup="menu" aria-expanded="false" class="text-sm font-medium text-[#1E40AF] hover:underline underline-offset-4 hover:text-[#3B82F6] transition-colors flex items-center gap-2">
+                <span>Services</span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4 text-[#1E40AF] transition-transform duration-300">
+                  <path d="m6 9 6 6 6-6"></path>
+                </svg>
+              </button>
+              <div id="services-dropdown" class="absolute top-full left-0 mt-2 w-48 bg-[#5E0094] border border-[#e2e8f0] rounded-lg shadow-lg z-50 hidden">
+                <a href="#primary-care" class="block px-4 py-2 text-sm text-[#FDF0FF] hover:bg-[#9C00C9]">Alternative Medicine Recommendations</a>
+                <a href="therpy.html" class="block px-4 py-2 text-sm text-[#FDF0FF] hover:bg-[#9C00C9]">Age-Based Lifestyle Therapies</a>
+                <a href="#wellness-programs" class="block px-4 py-2 text-sm text-[#FDF0FF] hover:bg-[#9C00C9]">Predict Diabetess</a>
+                <a href="#pharmacy" class="block px-4 py-2 text-sm text-[#FDF0FF] hover:bg-[#9C00C9]">Predict Heart Diseases</a>
+                <a href="./Location Detector/index.html" class="block px-4 py-2 text-sm text-[#FDF0FF] hover:bg-[#9C00C9]">Find Nearby Hospitals</a>
+                <a href="#rehabilitation" class="block px-4 py-2 text-sm text-[#FDF0FF] hover:bg-[#9C00C9]">Predictive Health Analytics</a>
+              </div>
+            </div>
+            <a class="text-sm font-medium text-[#1E40AF] hover:underline underline-offset-4 hover:text-[#3B82F6] transition-colors" href="contact.html">Contact</a>
+            <a class="inline-flex h-8 items-center justify-center rounded-full bg-[#5E0094] px-4 text-sm font-medium text-white shadow transition-colors hover:bg-[#9C00C9] focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 " href="login.html">Login</a>
+          </div>
+      
+          <!-- Mobile Dropdown Menu -->
+          <div id="mobile-menu" class="lg:hidden absolute top-14 right-0 mt-2 w-48 bg-white border border-[#e2e8f0] rounded-lg shadow-lg hidden z-50">
+            <a href="index.html" class="block px-4 py-2 text-sm text-[#1E40AF] hover:bg-[#BFDBFE]">Home</a>
+            <button type="button" id="mobile-services-button" class="w-full text-left px-4 py-2 text-sm text-[#1E40AF] hover:bg-[#BFDBFE] flex items-center justify-between">
+              Services
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4 text-[#1E40AF] transition-transform duration-300">
+                <path d="m6 9 6 6 6-6"></path>
+              </svg>
+            </button>
+            <div id="mobile-services-dropdown" class="hidden mt-2 bg-[#5E0094] z-50">
+              <a href="#primary-care" class="block px-4 py-2 text-sm text-[#FDF0FF] hover:bg-[#9C00C9]">Alternative Medicine Recommendations</a>
+              <a href="therpy.html" class="block px-4 py-2 text-sm text-[#FDF0FF] hover:bg-[#9C00C9]">Age-Based Lifestyle Therapies</a>
+              <a href="#wellness-programs" class="block px-4 py-2 text-sm text-[#FDF0FF] hover:bg-[#9C00C9]">Predict Diabetess</a>
+              <a href="#pharmacy" class="block px-4 py-2 text-sm text-[#FDF0FF] hover:bg-[#9C00C9]">Predict Heart Diseases</a>
+              <a href="./Location Detector/index.html" class="block px-4 py-2 text-sm text-[#FDF0FF] hover:bg-[#9C00C9]">Find Nearby Hospitals</a>
+              <a href="#rehabilitation" class="block px-4 py-2 text-sm text-[#FDF0FF] hover:bg-[#9C00C9]">Predictive Health Analytics</a>
+            </div>
+            <a href="contact.html" class="block px-4 py-2 text-sm text-[#1E40AF] hover:bg-[#BFDBFE]">Contact</a>
+            <a href="login.html" class="block px-4 py-2 text-sm text-[#1E40AF] hover:bg-[#BFDBFE]">Login</a>
+          </div>
+        </nav>
+      </header>
+      
+      
+      <main class="flex-1">
+        <section class="w-full py-12 md:py-24 lg:py-32 bg-cover bg-center" style="background-image: url('./public/bg2.png');">
+          <div class="container px-2 md:px-4 mx-auto flex flex-col md:flex-row items-center justify-between gap-8">
+            <div class="space-y-4 text-center md:text-left">
+              <h1 class="text-4xl font-bold tracking-tighter text-[#5E0094] sm:text-5xl md:text-6xl animate-fade-in md:ml-[-20px]">
+                Welcome to MedPulseAI
+              </h1>
+              <p class="max-w-[600px] text-lg text-[#5E0094] animate-fade-in delay-100 md:ml-[-20px]">
+                an innovative health-tech platform harnessing the power of machine learning to empower individuals to take control of their well-being. It offers a comprehensive suite of features
+              </p>
+              <div class="flex justify-center md:justify-start">
+                <a
+                  class="inline-flex h-10 items-center justify-center rounded-md bg-[#1E40AF] px-8 text-sm font-medium text-white shadow transition-colors hover:bg-[#3B82F6] focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 animate-bounce md:ml-[-20px]"
+                  href="#services"
+                >
+                  Get Started
+                </a>
+              </div>
+            </div>
+            <div class="mx-auto aspect-video overflow-hidden rounded-xl sm:w-full md:order-first relative">
+              <img src="./public/landingimg.png" alt="Animated Image" class="w-full h-full object-cover animate-image">
+          </div>
+          </div>
+        </section>
+      </main>
+      
+      
+    <!-- Features Section -->
+  <section class="w-full bg-gradient-to-r from-blue-500 to-purple-500 text-white py-4 overflow-hidden">
+    <div id="scroll-container" class="flex justify-center space-x-8 animate-scroll">
+      <span class="font-bold animate-enter">• Predict Diseases</span>
+      <span class="font-bold animate-enter">• Alternative Medicine Recommendations</span>
+      <span class="font-bold animate-enter">• Age-Based Lifestyle Therapies</span>
+      <span class="font-bold animate-enter">• Predictive Health Analytics</span>
+      <span class="font-bold animate-enter">• Emergency Hospital Locator</span>
+      <span class="font-bold animate-enter">• Provide better models</span>
+      <span class="font-bold animate-enter">• Data Privacy and Security</span>
+    </div>
+  </section> 
+      
+   <!-- ABOUT US -->
+<section class="w-full py-12 md:py-24 lg:py-32 bg-cover bg-center" style="background-image: url('./public/bgwp2.png');">
+  <div class="container mx-auto px-4 md:px-6 lg:px-8 flex flex-col lg:flex-row items-center lg:items-start justify-center lg:justify-start gap-8">
+    <div id="lottie-animation-about" class="w-full max-w-[600px] h-[300px] lg:h-[400px] overflow-hidden rounded-xl flex justify-center items-center">
+      <!-- Lottie animation should be placed here -->
+    </div>
+    <div class="space-y-4 text-center lg:text-left">
+      <h2 class="text-3xl font-bold tracking-tighter text-[#1E40AF] sm:text-4xl md:text-5xl animate-fade-in">
+        Our Mission
+      </h2>
+      <p class="text-lg text-[#1E40AF] max-w-[90%] sm:max-w-[600px] mx-auto lg:mx-0 animate-fade-in delay-100">
+        MedPulseAI is an innovative health-tech platform harnessing the power of machine learning to empower individuals to take control of their well-being. It offers a comprehensive suite of features designed to enhance your health journey through personalized recommendations and predictive insights
+      </p>
+      <div class="flex justify-center lg:justify-start">
+        <a
+          class="inline-flex h-10 items-center justify-center rounded-md bg-[#1E40AF] px-8 text-sm font-medium text-white shadow transition-colors hover:bg-[#3B82F6] focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 animate-bounce"
+          href="#about"
+        >
+          Learn More
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+    <!-- SERVICES: -->
+    <section  id=services class="w-full py-12 md:py-24 lg:py-32 bg-gradient-to-br from-[#D6E4FF] to-[#BFDBFE]">
+        <div class="container mx-auto px-4 md:px-6 lg:px-8 flex flex-col items-center text-center">
+          <div class="space-y-4">
+            <h2 class="text-3xl font-bold tracking-tighter text-[#1E40AF] sm:text-4xl md:text-5xl animate-fade-in">
+              Our Services
+            </h2>
+            <p class="max-w-[700px] text-lg text-[#1E40AF] animate-fade-in delay-100">
+              Discover our comprehensive range of healthcare services designed to meet your unique needs.
+            </p>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-6 mt-8">
+            <a href="#primary-care" class="bg-white rounded-lg p-6 shadow-lg transition-all hover:scale-105 animate-fade-in delay-200 block">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="h-8 w-8 text-[#1E40AF] animate-pulse"
+              >
+                <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path>
+                <path d="M3.22 12H9.5l.5-1 2 4.5 2-7 1.5 3.5h5.27"></path>
+              </svg>
+              <h3 class="text-xl font-bold text-[#1E40AF] mt-4">Alternative Medicine Recommendations</h3>
+              <p class="text-[#1E40AF] mt-2">MedPulseAI analyzes user health profiles and medical history to suggest alternative medicines and holistic remedies. </p>
+            </a>
+            <a href="therpy.html" class="bg-white rounded-lg p-6 shadow-lg transition-all hover:scale-105 animate-fade-in delay-300 block">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="h-8 w-8 text-[#1E40AF] animate-pulse"
+              >
+                <path d="M4.8 2.3A.3.3 0 1 0 5 2H4a2 2 0 0 0-2 2v5a6 6 0 0 0 6 6v0a6 6 0 0 0 6-6V4a2 2 0 0 0-2-2h-1a.2.2 0 1 0 .3.3"></path>
+                <path d="M8 15v1a6 6 0 0 0 6 6v0a6 6 0 0 0 6-6v-4"></path>
+                <circle cx="20" cy="10" r="2"></circle>
+              </svg>
+              <h3 class="text-xl font-bold text-[#1E40AF] mt-4">Age-Based Lifestyle Therapies</h3>
+              <p class="text-[#1E40AF] mt-2">Whether you're looking to improve your fitness, nutrition, or mental wellness , MedPulseAI delivers recommendations that fit your life stage, promoting a healthier and more balanced lifestyle.</p>
+            </a>
+            <a href="#wellness-programs" class="bg-white rounded-lg p-6 shadow-lg transition-all hover:scale-105 animate-fade-in delay-400 block">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="h-8 w-8 text-[#1E40AF] animate-pulse"
+              >
+                <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path>
+              </svg>
+              <h3 class="text-xl font-bold text-[#1E40AF] mt-4">Predict diabetes</h3>
+              <p class="text-[#1E40AF] mt-2">By collecting and analyzing user inputs, MedPulseAI predicts the risk of diabetes and heart disease, providing early warnings and actionable insights.</p>
+            </a>
+            <a href="#pharmacy" class="bg-white rounded-lg p-6 shadow-lg transition-all hover:scale-105 animate-fade-in delay-500 block">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="h-8 w-8 text-[#1E40AF] animate-pulse"
+              >
+                <path d="M12 6v4"></path>
+                <path d="M14 14h-4"></path>
+                <path d="M14 18h-4"></path>
+                <path d="M14 8h-4"></path>
+                <path d="M18 12h2a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2v-9a2 2 0 0 1 2-2h2"></path>
+                <path d="M18 22V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v18"></path>
+              </svg>
+              <h3 class="text-xl font-bold text-[#1E40AF] mt-4">Predict Heart Diseases</h3>
+              <p class="text-[#1E40AF] mt-2">By collecting and analyzing user inputs, MedPulseAI predicts the risk of diabetes and heart disease, providing early warnings and actionable insights.</p>
+            </a>
+            <a href="./Location Detector/index.html" class="bg-white rounded-lg p-6 shadow-lg transition-all hover:scale-105 animate-fade-in delay-600 block">
+                <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="h-8 w-8 text-[#1E40AF] animate-pulse"
+              >
+                <path d="M18 11h-4a1 1 0 0 0-1 1v5a1 1 0 0 0 1 1h4"></path>
+                <path d="M6 7v13a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V7"></path>
+                <rect width="16" height="5" x="4" y="2" rx="1"></rect>
+              </svg>
+              <h3 class="text-xl font-bold text-[#1E40AF] mt-4">Emergency Nearby Hospital Locator</h3>
+              <p class="text-[#1E40AF] mt-2">: In times of urgent need, MedPulseAI quickly locates nearby hospitals and clinics, offering essential information and directions to ensure timely medical intervention.</p>
+            </a>
+            <a href="#rehabilitation" class="bg-white rounded-lg p-6 shadow-lg transition-all hover:scale-105 animate-fade-in delay-700 block">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="h-8 w-8 text-[#1E40AF] animate-pulse"
+              >
+                <path d="M7 19H4.815a1.83 1.83 0 0 1-1.57-.881 1.785 1.785 0 0 1-.004-1.784L7.196 9.5"></path>
+                <path d="M11 19h8.203a1.83 1.83 0 0 0 1.556-.89 1.784 1.784 0 0 0 0-1.775l-1.226-2.12"></path>
+                <path d="m14 16-3 3 3 3"></path>
+                <path d="M8.293 13.596 7.196 9.5 3.1 10.598"></path>
+                <path d="m9.344 5.811 1.093-1.892A1.83 1.83 0 0 1 11.985 3a1.784 1.784 0 0 1 1.546.888l3.943 6.843"></path>
+                <path d="m13.378 9.633 4.096 1.098 1.097-4.096"></path>
+              </svg>
+              <h3 class="text-xl font-bold text-[#1E40AF] mt-4">Predictive Health Analytics</h3>
+              <p class="text-[#1E40AF] mt-2">By collecting and analyzing user inputs, MedPulseAI predicts the risk of diabetes and heart disease, providing early warnings and actionable insights. </p>
+            </a>
+          </div>
+        </div>
+      </section>
+<!-- FOOTER  -->
+      <!-- About Section -->
+  <section id="about" class="p-8 mt-0">
+    <div class="flex flex-col md:flex-row mt-8">
+      <div class="md:w-1/4">
+        <img class="rounded-lg image-animation" src="./public/pic1.png" alt="Service Image" />
+      </div>
+      <div class="md:w-3/4 md:pl-8">
+        <h2 class="text-3xl font-bold mb-4">About MedPulseAI</h2>
+        <div class="border-b border-gray-400 mb-4"></div>
+        <div class="flex flex-col md:flex-row">
+          <div class="md:w-1/3 mb-4 md:mb-0">
+            <div class="bg-[#5E0094] text-white rounded-full px-4 py-1 inline-block mb-2">What's MedPulseAI</div>
+            <p>MedPulseAI is an innovative health-tech platform harnessing the power of machine learning to empower individuals to take control of their well-being. It offers a comprehensive suite of features </p>
+          </div>
+          <div class="md:w-1/3 mb-4 md:mb-0">
+            <div class="bg-[#5E0094] text-white rounded-full px-7 py-1 inline-block mb-2">Our Goals</div>
+            <ul class="list-disc list-inside px-5">
+              <li>Alternative Medicine Recommendations</li>
+              <li>Age-Based Lifestyle Therapies</li>
+              <li>Emergency Hospital Locator</li>
+              <li>Predictive Health Analytics</li>
+              <li>Predict Diseases With Accuracy</li>
+            </ul>
+          </div>
+          <div class="md:w-1/3">
+            <div class="bg-[#5E0094] text-white rounded-full px-4 py-1 inline-block mb-2">About Us</div>
+            <p>The platform provides users with alternative medicine recommendations, lifestyle therapy suggestions tailored to their age, predictive analytics for diabetes and heart disease, and real-time location-based services to find nearby hospitals in emergencies. </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="p-8">
+    <div class="mt-8">
+      <h2 class="text-3xl font-bold mb-4">Contact Us</h2>
+      <div class="border-b border-gray-400 mb-4"></div>
+      <div class="flex flex-col md:flex-row">
+        <div class="md:w-1/2 mb-4 md:mb-0">
+          <p class="font-bold text-purple-600">Email Support:</p>
+          <p>MedPulseAIsupport@gmail.com</p>
+        </div>
+        <div class="md:w-1/2">
+          <p class="font-bold text-purple-600">Phone:</p>
+          <p>+1-123-456-7890</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <script>
+  document.getElementById('services-button').addEventListener('click', function () {
+    const dropdown = document.getElementById('services-dropdown');
+    dropdown.classList.toggle('hidden');
+  });
+</script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const menuToggle = document.getElementById('menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const servicesButton = document.getElementById('mobile-services-button');
+    const mobileServicesDropdown = document.getElementById('mobile-services-dropdown');
+
+    // Toggle mobile menu visibility
+    menuToggle.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+
+    // Toggle dropdown menu inside mobile menu
+    servicesButton.addEventListener('click', () => {
+      mobileServicesDropdown.classList.toggle('hidden');
+    });
+
+    // Close mobile menu if clicking outside of it
+    document.addEventListener('click', (event) => {
+      if (!mobileMenu.contains(event.target) && !menuToggle.contains(event.target)) {
+        mobileMenu.classList.add('hidden');
+      }
+    });
+  });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.7.13/lottie.min.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var animationContainer = document.getElementById('lottie-animation');
+
+    var animation = lottie.loadAnimation({
+      container: animationContainer,
+      renderer: 'svg', // or 'canvas' or 'html'
+      loop: true, // Loop the animation
+      autoplay: true, // Start playing the animation automatically
+      path: './public/animationmain.json' // Replace with the path to your JSON file
+    });
+  });
+</script>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var animationContainerAbout = document.getElementById('lottie-animation-about');
+
+    lottie.loadAnimation({
+      container: animationContainerAbout,
+      renderer: 'svg',
+      loop: true,
+      autoplay: true,
+      path: './public/animationpred.json' // Replace with the path to your JSON file
+    });
+  });
+</script>
+
+
+</body>
+</html>
