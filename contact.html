@@ -74,67 +74,79 @@
       </header>
       
 
-<div class="flex justify-center items-center min-h-screen px-4 py-8 bg-gradient-to-br from-[#D6E4FF] to-[#BFDBFE]">
-    <div class="w-full max-w-lg rounded-lg border shadow-sm bg-[#f0f8ff] text-[#0077b6] p-6">
-      <h3 class="text-3xl font-bold mb-4">Get in Touch</h3>
-      <p class="text-sm text-[#0077b6] mb-6">
-        Fill out the form below and we'll get back to you as soon as possible.
-      </p>
-      <form class="space-y-4">
-        <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
-          <div class="space-y-2">
-            <label class="text-sm font-medium text-[#0077b6]" for="first-name">
-              First Name
-            </label>
-            <input
-              class="w-full h-10 rounded-md border px-3 py-2 text-sm bg-[#f0f8ff] border-[#0077b6] text-[#0077b6] placeholder:text-[#0077b6] focus:outline-none focus:ring-2 focus:ring-[#0077b6]"
-              id="first-name"
-              placeholder="Enter your first name"
-            />
-          </div>
-          <div class="space-y-2">
-            <label class="text-sm font-medium text-[#0077b6]" for="last-name">
-              Last Name
-            </label>
-            <input
-              class="w-full h-10 rounded-md border px-3 py-2 text-sm bg-[#f0f8ff] border-[#0077b6] text-[#0077b6] placeholder:text-[#0077b6] focus:outline-none focus:ring-2 focus:ring-[#0077b6]"
-              id="last-name"
-              placeholder="Enter your last name"
-            />
-          </div>
+      <div class="flex justify-center items-center min-h-screen px-4 py-8 bg-gradient-to-br from-[#D6E4FF] to-[#BFDBFE]">
+        <div class="w-full max-w-lg rounded-lg border shadow-sm bg-[#f0f8ff] text-[#0077b6] p-6">
+          <h3 class="text-3xl font-bold mb-4">Get in Touch</h3>
+          <p class="text-sm text-[#0077b6] mb-6">
+            Fill out the form below and we'll get back to you as soon as possible.
+          </p>
+          <form action="https://api.web3forms.com/submit" method="POST" class="space-y-8">
+            <input type="hidden" name="access_key" value="877f29ad-1ea2-4783-a435-fbc96799c4ed">
+            <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
+              <div class="space-y-2">
+                <label class="text-sm font-medium text-[#0077b6]" for="first-name">
+                  First Name
+                </label>
+                <input
+                  class="w-full h-10 rounded-md border px-3 py-2 text-sm bg-[#f0f8ff] border-[#0077b6] text-[#0077b6] placeholder:text-[#0077b6] focus:outline-none focus:ring-2 focus:ring-[#0077b6]"
+                  id="first-name"
+                  name="first-name"
+                  placeholder="Enter your first name"
+                  type="text"
+                  required
+                />
+              </div>
+              <div class="space-y-2">
+                <label class="text-sm font-medium text-[#0077b6]" for="last-name">
+                  Last Name
+                </label>
+                <input
+                  class="w-full h-10 rounded-md border px-3 py-2 text-sm bg-[#f0f8ff] border-[#0077b6] text-[#0077b6] placeholder:text-[#0077b6] focus:outline-none focus:ring-2 focus:ring-[#0077b6]"
+                  id="last-name"
+                  name="last-name"
+                  placeholder="Enter your last name"
+                  type="text"
+                  required
+                />
+              </div>
+            </div>
+            <div class="space-y-2">
+              <label class="text-sm font-medium text-[#0077b6]" for="email">
+                Email
+              </label>
+              <input
+                class="w-full h-10 rounded-md border px-3 py-2 text-sm bg-[#f0f8ff] border-[#0077b6] text-[#0077b6] placeholder:text-[#0077b6] focus:outline-none focus:ring-2 focus:ring-[#0077b6]"
+                id="email"
+                name="email"
+                placeholder="Enter your email"
+                type="email"
+                required
+              />
+            </div>
+            <div class="space-y-2">
+              <label class="text-sm font-medium text-[#0077b6]" for="message">
+                Message
+              </label>
+              <textarea
+                class="w-full rounded-md border px-3 py-2 text-sm bg-[#f0f8ff] border-[#0077b6] text-[#0077b6] placeholder:text-[#0077b6] focus:outline-none focus:ring-2 focus:ring-[#0077b6] min-h-[100px]"
+                id="message"
+                name="message"
+                placeholder="Enter your message"
+                required
+              ></textarea>
+            </div>
+            <div class="flex justify-center">
+              <button
+                class="inline-flex items-center justify-center rounded-md text-sm font-medium bg-[#0077b6] text-white hover:bg-[#005f73] h-10 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-[#0077b6]"
+                type="submit"
+              >
+                Send
+              </button>
+            </div>
+          </form>
         </div>
-        <div class="space-y-2">
-          <label class="text-sm font-medium text-[#0077b6]" for="email">
-            Email
-          </label>
-          <input
-            class="w-full h-10 rounded-md border px-3 py-2 text-sm bg-[#f0f8ff] border-[#0077b6] text-[#0077b6] placeholder:text-[#0077b6] focus:outline-none focus:ring-2 focus:ring-[#0077b6]"
-            id="email"
-            placeholder="Enter your email"
-            type="email"
-          />
-        </div>
-        <div class="space-y-2">
-          <label class="text-sm font-medium text-[#0077b6]" for="message">
-            Message
-          </label>
-          <textarea
-            class="w-full rounded-md border px-3 py-2 text-sm bg-[#f0f8ff] border-[#0077b6] text-[#0077b6] placeholder:text-[#0077b6] focus:outline-none focus:ring-2 focus:ring-[#0077b6] min-h-[100px]"
-            id="message"
-            placeholder="Enter your message"
-          ></textarea>
-        </div>
-        <div class="flex justify-center">
-          <button
-            class="inline-flex items-center justify-center rounded-md text-sm font-medium bg-[#0077b6] text-white hover:bg-[#005f73] h-10 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-[#0077b6]"
-            type="submit"
-          >
-            Send
-          </button>
-        </div>
-      </form>
-    </div>
-  </div>
+      </div>
+      
 <!-- FOOTER  -->
       <!-- About Section -->
       <section id="about" class="p-8 mt-0">
