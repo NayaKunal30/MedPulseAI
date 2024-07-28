@@ -95,7 +95,7 @@
               </div>
             </div>
             <a class="text-sm font-medium text-[#1E40AF] hover:underline underline-offset-4 hover:text-[#3B82F6] transition-colors" href="contact.html">Contact</a>
-            <a class="inline-flex h-8 items-center justify-center rounded-full bg-[#5E0094] px-4 text-sm font-medium text-white shadow transition-colors hover:bg-[#9C00C9] focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50" href="./registration/templates/login.html">Logout</a>
+            <a class="inline-flex h-8 items-center justify-center rounded-full bg-[#5E0094] px-4 text-sm font-medium text-white shadow transition-colors hover:bg-[#9C00C9] focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50" href="{% url 'logout' %}">Logout</a>
           </div>
       
           <!-- Mobile Dropdown Menu -->
@@ -116,7 +116,7 @@
               <a href="record.html" class="block px-4 py-2 text-sm text-[#FDF0FF] hover:bg-[#9C00C9]">Decentralized Medical Records Storage</a>
             </div>
             <a href="contact.html" class="block px-4 py-2 text-sm text-[#1E40AF] hover:bg-[#BFDBFE]">Contact</a>
-            <a href="./registration/templates/login.html" class="block px-4 py-2 text-sm text-[#1E40AF] hover:bg-[#BFDBFE]">Logout</a>
+            <a href="{% url 'logout' %}" class="block px-4 py-2 text-sm text-[#1E40AF] hover:bg-[#BFDBFE]">Logout</a>
           </div>
         </nav>
       </header>
