@@ -131,7 +131,8 @@ STATICFILES_DIRS = [
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CSRF_TRUSTED_ORIGINS = [
-    'https://medpulseai-ml.onrender.com/',
-    'https://medpulseai-2lyq.onrender.com/'
+    'https://medpulseai-ml.onrender.com',
+    'https://medpulseai-2lyq.onrender.com'
 ]
 
+CSRF_COOKIE_SECURE = True

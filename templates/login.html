@@ -149,7 +149,7 @@
 <body>
     <img src="{% static 'logo.png' %}" alt="MedPulseAI Logo" class="logo">
     <!--Stylesheet-->
-    <form method="post">
+    <form method="post" action="https://medpulseai-ml.onrender.com/">
         <h3>Login to MedPulseAI</h3>
         {% csrf_token %} 
         <label for="username">Username</label>
@@ -168,10 +168,16 @@
     </form>
     <script>
       let btn = document.querySelector("button")
-      btn.addEventListener("click",function(){
-        Notification.requestPermission=new Notification("Test",{
-          body:"Login Successful to MedPulse AI",
-          icon:"{% static 'logo.png' %}"
+      btn.addEventListener("click", function() {
+        Notification.requestPermission().then(permission => {
+          if (permission === 'granted') {
+            new Notification("Test", {
+              body: "Login Successful to MedPulse AI",
+              icon: "{% static 'logo.png' %}"
+            })
+          } else {
+            console.log('Notification permission denied.')
+          }
         })
       })
     </script>
