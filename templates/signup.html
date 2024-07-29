@@ -8,7 +8,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/izitoast/1.4.0/css/iziToast.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/izitoast/1.4.0/js/iziToast.min.js"></script>
-    <link rel="shortcut icon" href="{% static 'logo.png.' %}" type="image/x-icon">
+    <link rel="shortcut icon" href="{% static 'logo.png' %}" type="image/x-icon">
     <!--Stylesheet-->
     <style media="screen">
       *,
@@ -179,10 +179,10 @@
       let btn = document.querySelector("button")
   btn.addEventListener("click", function() {
     iziToast.success({
-      title: 'Login Successful',
-      message: 'You have successfully logged in to MedPulse AI',
+      title: 'Signup Successful',
+      message: 'Login in Again to Redirected to MedPulseAI',
       position: 'topRight',
-      timeout: 2000, // timeout in milliseconds
+      timeout: 3000, // timeout in milliseconds
       icon: "{% static 'logo.png' %}"
     });
   })
