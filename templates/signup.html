@@ -169,7 +169,7 @@
 
 
         <label for="password2">Confirm Password</label>
-        <input type="password" placeholder="Confrom Password" id="password2" name="password2">
+        <input type="password" placeholder="Confirm Password" id="password2" name="password2">
         <button type="submit">Signup</button>
         
         <p>Already Have an Account ? <a href="{% url 'login' %}" >Login</a></p>
@@ -180,10 +180,9 @@
   btn.addEventListener("click", function() {
     iziToast.success({
       title: 'Signup Successful',
-      message: 'Login in Again to Redirected to MedPulseAI',
+      message: 'Login in to get Redirected to MedPulseAI',
       position: 'topRight',
       timeout: 3000, // timeout in milliseconds
-      icon: "{% static 'logo.png' %}"
     });
   })
     </script>
