@@ -177,14 +177,15 @@
     </form>
     <script>
       let btn = document.querySelector("button")
-      btn.addEventListener("click", function() {
-        iziToast.success({
-          title: 'Login Successful',
-          message: 'You have successfully logged in to MedPulseAI',
-          position: 'topRight',
-          timeout: 2000, // timeout in milliseconds
-        });
-      })
+  btn.addEventListener("click", function() {
+    iziToast.success({
+      title: 'Login Successful',
+      message: 'You have successfully logged in to MedPulse AI',
+      position: 'topRight',
+      timeout: 2000, // timeout in milliseconds
+      icon: "{% static 'logo.png' %}"
+    });
+  })
     </script>
 </body>
 </html>

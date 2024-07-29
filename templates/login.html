@@ -170,20 +170,16 @@
         <p>Don't Have an Account ? <a href="{% url 'signup' %}" >Create a account</a></p>
     </form>
     <script>
-      <script>
-        document.getElementById('login-form').addEventListener('submit', function(event) {
-          event.preventDefault();
-          iziToast.success({
-              title: 'Login Successful',
-              message: 'You have successfully logged in to MedPulseAI',
-              position: 'topRight',
-              timeout: 2000, 
-          });
-          setTimeout(() => {
-              this.submit();
-          }, 2000);
-      });
-      </script>
+      let btn = document.querySelector("button")
+  btn.addEventListener("click", function() {
+    iziToast.success({
+      title: 'Login Successful',
+      message: 'You have successfully logged in to MedPulse AI',
+      position: 'topRight',
+      timeout: 2000, // timeout in milliseconds
+      icon: "{% static 'logo.png' %}"
+    });
+  })
     </script>
     
 </body>
