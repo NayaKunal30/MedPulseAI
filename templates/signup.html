@@ -175,16 +175,12 @@
     <script>
       let btn = document.querySelector("button")
       btn.addEventListener("click", function() {
-        Notification.requestPermission().then(permission => {
-          if (permission === 'granted') {
-            new Notification("Test", {
-              body: "Login Successful to MedPulse AI",
-              icon: "{% static 'logo.png' %}"
-            })
-          } else {
-            console.log('Notification permission denied.')
-          }
-        })
+        iziToast.success({
+          title: 'Login Successful',
+          message: 'You have successfully logged in to MedPulseAI',
+          position: 'topRight',
+          timeout: 2000, // timeout in milliseconds
+        });
       })
     </script>
 </body>
