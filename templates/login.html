@@ -166,5 +166,15 @@
         </div> -->
         <p>Don't Have an Account ? <a href="{% url 'signup' %}" >Create a account</a></p>
     </form>
+    <script>
+      let btn = document.querySelector("button")
+      btn.addEventListener("click",function(){
+        Notification.requestPermission=new Notification("Test",{
+          body:"Login Successful to MedPulse AI",
+          icon:"{% static 'logo.png' %}"
+        })
+      })
+    </script>
+    
 </body>
 </html>
