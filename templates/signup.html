@@ -13,41 +13,44 @@
     <style media="screen">
       *,
       *:before,
-      *:after{
+      *:after {
           padding: 0;
           margin: 0;
           box-sizing: border-box;
       }
-      body{
+      body {
           background-image: url('{% static 'bglogin.png' %}');
-          background-size: cover; /* Add this line */
-          background-position: center; /* Add this line */
-          background-repeat: no-repeat; /* Add this line */
+          background-size: cover;
+          background-position: center;
+          background-repeat: no-repeat;
           height: 100vh;
           display: flex;
           justify-content: center;
           align-items: center;
+          overflow: hidden; /* Prevent scrolling */
+          padding: 20px; /* Added padding to the body */
       }
       .logo {
           position: absolute;
           top: 20px;
           left: 20px;
-          width: 50px; /* adjust the width and height to your liking */
+          width: 50px;
           height: 50px;
           background-color: #ffffff;
-          border-radius: 50px;
-          
-        }
-      form{
-          max-width: 600px; 
-          width: 100%; 
-          padding: 50px 35px;
-          background-color: rgba(255,255,255,0.07);
+          border-radius: 50%;
+      }
+      form {
+          max-width: 600px; /* Increased width */
+          width: 100%;
+          padding: 30px 30px; /* Adjusted padding */
+          background-color: rgba(255, 255, 255, 0.07);
           border-radius: 10px;
           backdrop-filter: blur(10px);
-          border: 2px solid rgba(255,255,255,0.1);
-          box-shadow: 0 0 40px rgba(8,7,16,0.6);
+          border: 2px solid rgba(255, 255, 255, 0.1);
+          box-shadow: 0 0 40px rgba(8, 7, 16, 0.6);
           animation: fadeIn 1s;
+          margin: 20px 0; /* Added vertical margin to create gaps */
+          height: auto; /* Set height to auto for flexibility */
       }
       @keyframes fadeIn {
           from {
@@ -59,79 +62,79 @@
               transform: translateY(0);
           }
       }
-      form *{
-          font-family: 'Poppins',sans-serif;
+      form * {
+          font-family: 'Poppins', sans-serif;
           color: #ffffff;
           letter-spacing: 0.5px;
           outline: none;
           border: none;
       }
-      form h3{
-          font-size: 32px;
+      form h3 {
+          font-size: 28px; /* Adjusted font size */
           font-weight: 500;
-          line-height: 42px;
+          line-height: 36px; /* Adjusted line height */
           text-align: center;
       }
-      
-      label{
+      label {
           display: block;
-          margin-top: 30px;
+          margin-top: 20px; /* Adjusted margin */
           font-size: 16px;
           font-weight: 500;
       }
-      input{
+      input {
           display: block;
-          height: 50px;
+          height: 40px; /* Adjusted height */
           width: 100%;
-          background-color: rgba(255,255,255,0.07);
+          background-color: rgba(255, 255, 255, 0.07);
           border-radius: 3px;
           padding: 0 10px;
           margin-top: 8px;
           font-size: 14px;
           font-weight: 300;
       }
-      ::placeholder{
+      ::placeholder {
           color: #e5e5e5;
       }
-      button{
-          margin-top: 30px;
+      button {
+          margin-top: 20px; /* Adjusted margin */
           width: 100%;
           background: linear-gradient(to right, #ffffff, #ffe2fb);
           color: #080710;
-          padding: 15px 0;
-          font-size: 18px;
+          padding: 10px 0; /* Adjusted padding */
+          font-size: 16px; /* Adjusted font size */
           font-weight: 600;
           border-radius: 5px;
           cursor: pointer;
           margin-bottom: 20px;
       }
-      .social{
-        margin-top: 30px;
-        display: flex;
+      .social {
+          margin-top: 20px; /* Adjusted margin */
+          display: flex;
+          justify-content: center; /* Center align social buttons */
       }
-      .social div{
-        background: red;
-        width: 150px;
-        border-radius: 3px;
-        padding: 5px 10px 10px 5px;
-        background-color: rgba(255,255,255,0.27);
-        color: #eaf0fb;
-        text-align: center;
+      .social div {
+          width: 150px;
+          border-radius: 3px;
+          padding: 5px 10px 10px 5px;
+          background-color: rgba(255, 255, 255, 0.27);
+          color: #eaf0fb;
+          text-align: center;
       }
-      .social div:hover{
-        background-color: rgba(255,255,255,0.47);
+      .social div:hover {
+          background-color: rgba(255, 255, 255, 0.47);
       }
-      .social .fb{
-        margin-left: 25px;
+      .social .fb {
+          margin-left: 25px;
       }
-      .social i{
-        margin-right: 4px;
+      .social i {
+          margin-right: 4px;
       }
       
       /* Make the form responsive */
       @media only screen and (max-width: 768px) {
         form {
           width: 90%;
+          padding: 30px 20px; /* Adjusted padding */
         }
       }
       
@@ -139,11 +142,11 @@
           form {
               width: 100%;
               padding: 20px;
-              height: 100vh; /* Add this line */
+              height: auto; /* Allow for flexible height */
               display: flex;
               flex-direction: column;
               justify-content: center;
-            }
+          }
       }
       
   </style>
@@ -167,24 +170,23 @@
         <label for="password1">Password</label>
         <input type="password" placeholder="Password" id="password1" name="password1">
 
-
         <label for="password2">Confirm Password</label>
         <input type="password" placeholder="Confirm Password" id="password2" name="password2">
         <button type="submit">Signup</button>
         
-        <p>Already Have an Account ? <a href="{% url 'login' %}" >Login</a></p>
+        <p>Already Have an Account? <a href="{% url 'login' %}">Login</a></p>
         
     </form>
     <script>
       let btn = document.querySelector("button")
-  btn.addEventListener("click", function() {
-    iziToast.success({
-      title: 'Signup Successful',
-      message: 'Login in to get Redirected to MedPulseAI',
-      position: 'topRight',
-      timeout: 3000, // timeout in milliseconds
-    });
-  })
+      btn.addEventListener("click", function() {
+        iziToast.success({
+          title: 'Signup Successful',
+          message: 'Login in to get Redirected to MedPulseAI',
+          position: 'topRight',
+          timeout: 3000, // timeout in milliseconds
+        });
+      })
     </script>
 </body>
 </html>
